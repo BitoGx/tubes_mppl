@@ -1,4 +1,7 @@
 <?php
+
+
+  
   //Memanggil Connection.php
   require_once "connection.php";
   
@@ -52,10 +55,13 @@
         echo $_SESSION['JobDesc'];
       }
     while($row=mysqli_fetch_row($hasil));
+    header("location: ../index.php");
   }
+  
   //Jika Username atau Password salah maka menampilkan pesan salah
   else
   {
     echo "<center><h1>USERNAME DAN PASSWORD SALAH</h1></center>";
+    //header("location: ../login.php");
   }
 ?>

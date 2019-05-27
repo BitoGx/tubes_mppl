@@ -1,6 +1,15 @@
-<!DOCTYPE html>
-<html>
+<?php
+  //Menjalankan Session
+  session_start();
 
+  //Menyimpan data dari session
+  $id      = $_SESSION['Id'];
+  $nama    = $_SESSION['Nama'];
+  $level   = $_SESSION['Level'];
+  $jobdesc = $_SESSION['JobDesc'];
+?>
+
+<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,14 +68,16 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="" class="user-image" alt="User Image">
-                <span class="hidden-xs">nama Petugas</span>
+                <span class="hidden-xs"><?php echo $nama; ?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
                   <img src="" class="img-circle" alt="User Image">
                   <p>
-                    Nama Petugas
+                    <?php 
+                      echo $nama;
+                    ?>
                   </p>
                 </li>
                 <!-- Menu Footer-->
