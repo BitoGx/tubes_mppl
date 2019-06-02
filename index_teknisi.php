@@ -11,12 +11,12 @@
   //Mengecek role pengguna
   switch($level)
   {
-    case 1:
-      header("location: ../tubes_mppl/index_teknisi.php");
-      exit;
-    break;
     case 2:
       header("location: ../tubes_mppl/index_penanggung.php");
+      exit;
+    break;
+    case 3:
+      header("location: ../tubes_mppl/index.php");
       exit;
     break;
   }
@@ -90,7 +90,7 @@
                   <img src="" class="img-circle" alt="User Image">
                   <p>
                     <?php 
-                      echo $nama;
+                      echo $nama; 
                     ?>
                   </p>
                 </li>
@@ -133,25 +133,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">Menu Utama</li>
-          <li class="active">
-            <a href="index.html">
-              <i class="fa fa-circle-o-notch"></i>
-              <span>Alur Waktu</span>
-            </a>
-          </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-user"></i> <span>Penyewaan</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Kelola Penyewa</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Data Hasil Sewa</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
+          <li class="active treeview">
             <a href="#">
               <i class="fa fa-files-o"></i>
               <span>Barang</span>
@@ -161,21 +143,13 @@
             </a>
             <ul class="treeview-menu">
               <li><a href=""><i class="fa fa-circle-o"></i>Kelola barang</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Data Hasil Barang</a></li>
             </ul>
           </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-arrows"></i>
-              <span>Kelola Alur Barang</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+          <li>
+            <a href="">
+              <i class="fa fa-circle-o-notch"></i>
+              <span>Catatan</span>
             </a>
-            <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i> barang Keluar</a></li>
-            </ul>
           </li>
           <li class="treeview">
             <a href="#">
@@ -186,7 +160,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href=""><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Kelola Semua Akun</a></li>
             </ul>
           </li>
         </ul>
@@ -203,85 +176,6 @@
         </h1>
       </section>
       <!-- Main content -->
-      <section class="content">
-      
-        <!-- row -->
-        <div class="row">
-          <div class="col-md-12">
-            <!-- The time line -->
-            <ul class="timeline">
-              <!-- timeline time label -->
-              <li class="time-label">
-                <span class="bg-red">
-                  10 Feb. 2014
-                </span>
-              </li>
-              <!-- /.timeline-label -->
-              <!-- timeline item -->
-              <li>
-                <i class="fa fa-envelope bg-blue"></i>
-
-                <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                  <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                  <div class="timeline-body">
-                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                    quora plaxo ideeli hulu weebly balihoo...
-                  </div>
-                  <div class="timeline-footer">
-                    <a class="btn btn-primary btn-xs">Read more</a>
-                    <a class="btn btn-danger btn-xs">Delete</a>
-                  </div>
-                </div>
-              </li>
-              <!-- END timeline item -->
-              <!-- timeline item -->
-              <li>
-                <i class="fa fa-user bg-aqua"></i>
-
-                <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                  <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-                </div>
-              </li>
-              <!-- END timeline item -->
-              <!-- timeline item -->
-              <!-- END timeline item -->
-              <!-- timeline time label -->
-              <li class="time-label">
-                <span class="bg-green">
-                  3 Jan. 2014
-                </span>
-              </li>
-              <!-- /.timeline-label -->
-              <!-- timeline item -->
-              <li>
-                <i class="fa fa-camera bg-purple"></i>
-
-                <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-                  <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-                </div>
-              </li>
-              <!-- END timeline item -->
-              <!-- timeline item -->
-              <!-- END timeline item -->
-              <li>
-                <i class="fa fa-clock-o bg-gray"></i>
-              </li>
-            </ul>
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-        <!-- /.row -->
-
-      </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

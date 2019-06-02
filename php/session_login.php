@@ -1,6 +1,4 @@
 <?php
-
-
   
   //Memanggil Connection.php
   require_once "connection.php";
@@ -27,41 +25,35 @@
   //Menjalankan perintah perulangan sebanyak yang dibutuhkan
   if($row)
   {
-    do
-      {
-        list($IdUser,$Nama,$Level)=$row;
-        $_SESSION['Id']=$IdUser;
-        $_SESSION['Nama']=$Nama;
+    list($IdUser,$Nama,$Level)=$row;
+    $_SESSION['Id']=$IdUser;
+    $_SESSION['Nama']=$Nama;
+    $_SESSION['Level']=$Level;
+    $_SESSION['Loggedin']="true";
         
-        //Memisahkan Level setiap pekerja
-        switch($Level)
-        {
-          case 1:
-            $_SESSION['Level']=$Level;
-            $_SESSION['JobDesc']="Teknisi";
-            break;
-          case 2:
-            $_SESSION['Level']=$Level;
-            $_SESSION['JobDesc']="Penanggung Jawab";
-            break;
-          case 3:
-            $_SESSION['Level']=$Level;
-            $_SESSION['JobDesc']="Pemilik";
-            break;
-        }
-        echo $_SESSION['Id'];
-        echo $_SESSION['Nama'];
-        echo $_SESSION['Level'];
-        echo $_SESSION['JobDesc'];
-      }
-    while($row=mysqli_fetch_row($hasil));
-    header("location: ../index.php");
+    //Memisahkan Level setiap pekerja
+    switch($Level)
+    {
+      case 1:
+        $_SESSION['JobDesc']="Teknisi";
+        header("location: ../index_teknisi.php");
+      break;
+      case 2:
+        $_SESSION['JobDesc']="Penanggung Jawab";
+        header("location: ../index_penanggung.php");
+      break;
+      case 3:
+        $_SESSION['JobDesc']="Pemilik";
+        header("location: ../index.php");
+      break;
+    }
   }
   
   //Jika Username atau Password salah maka menampilkan pesan salah
   else
   {
     echo "<center><h1>USERNAME DAN PASSWORD SALAH</h1></center>";
+    $_SESSION['Loggedin']="false";
     //header("location: ../login.php");
   }
 ?>
