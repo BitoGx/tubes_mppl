@@ -16,19 +16,20 @@
   
   if($row)
   {
-  do
+    do
     {
       list($IdBarang,$NamaBarang,$Jumlah,$Baik,$Maintanance,$Rusak)=$row;
+      echo "<form action='barang.php' method='post'>";
       echo "<tr>
               <td>$NamaBarang
               <td>$Jumlah
               <td>$Baik
               <td>$Maintanance
               <td>$Rusak
-      ";
-      //echo "<input type='checkbox' name=Barang id='$IdBarang' value='$IdBarang'>$NamaBarang<br>";
+              <td><input type='submit' name='Action' value='Atur'><input type='hidden' name='IdBarang' value='$IdBarang'>";
+      echo "</form>";
     }
-  while($row=mysqli_fetch_row($hasil));
+    while($row=mysqli_fetch_row($hasil));
   }
   else
   {

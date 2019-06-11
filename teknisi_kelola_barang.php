@@ -142,7 +142,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Atur barang</a></li>
+              <li><a href="index_teknisi.php"><i class="fa fa-circle-o"></i>Atur barang</a></li>
             </ul>
             <ul class="treeview-menu">
               <li><a href="teknisi_kelola_barang.php"><i class="fa fa-circle-o"></i>Kelola Barang</a></li>
@@ -175,28 +175,11 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Menu Utama
+          Menu Kelola Barang
         </h1>
       </section>
       <!-- Main content -->
       <!-- /.content -->
-      <!--<form action="barang.php" method="post">-->
-        <table border = "1">
-          <tr>
-            <td rowspan = "2"> Nama Barang </td>
-            <td rowspan = "2"> Jumlah Barang </td>
-            <td colspan = "3"> Keadaan </td>
-            <td rowspan = "2"> Edit </td>
-          </tr>
-          <tr>
-            <td>Baik</td>
-            <td>Maintanance</td>
-            <td>Rusak</td>
-          </tr>
-          <!-- Semua Barang tampil + Checkbox -->
-          <?php require_once "php/tampil_barang.php"?>
-        </table>
-      <!--</form>-->
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -240,6 +223,18 @@
   <!-- AdminLTE App -->
   <script src="js/adminlte.min.js"></script>
   <!-- Mengecek Checkbox -->
+  <script>
+  function getCheckedCheckboxesFor(checkboxName)
+  {
+    var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked'), values = [];
+    Array.prototype.forEach.call(checkboxes, function(el)
+    {
+        values.push(el.value);
+    });
+    return values;
+}
+  </script>
+
 </body>
 
 </html>

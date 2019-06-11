@@ -38,7 +38,7 @@
               <input type="checkbox" name="remember" class="form-check-input"><span>Ingat saya</span>
             </div>
             <div class="form-group">
-              <input type="submit" type="submit" name="submit" value="Masuk" class="btn btn-primary btn-block" onclick="return(submitlogin())">
+              <input type="submit" name="submit" value="Masuk" class="btn btn-primary btn-block">
             </div>
           </form>
         </div>
