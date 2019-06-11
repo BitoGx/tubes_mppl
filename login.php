@@ -28,11 +28,11 @@
             </div>
             <div class="form-group">
               <label>Nama Pengguna</label>
-              <input type="text" name="username" placeholder="Masukan Akun" class="username-input form-control">
+              <input type="text" name="username" placeholder="Masukan Akun" class="username-input form-control" required>
             </div>
             <div class="form-group">
               <label>Kata Sandi</label>
-              <input type="password" name="password" placeholder="Masukan Kata Sandi" class="password-input form-control">
+              <input type="password" name="password" placeholder="Masukan Kata Sandi" class="password-input form-control" required>
             </div>
             <div class="form-group form-check">
               <input type="checkbox" name="remember" class="form-check-input"><span>Ingat saya</span>

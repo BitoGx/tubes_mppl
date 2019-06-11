@@ -177,6 +177,25 @@
       </section>
       <!-- Main content -->
       <!-- /.content -->
+      <form action="#" method="post">
+        <table border = "1">
+          <tr>
+            <td rowspan = "2"> Nama Barang </td>
+            <td rowspan = "2"> Jumlah Barang </td>
+            <td colspan = "3"> Keadaan </td>
+          </tr>
+          <tr>
+            <td>Baik</td>
+            <td>Maintanance</td>
+            <td>Rusak</td>
+          </tr>
+          <!-- Semua Barang tampil + Checkbox -->
+          <?php require_once "php/tampil_barang.php"?>
+          <tr>
+            <td colspan="4" text-align="center"><button type="button" onclick="alert(getCheckedCheckboxesFor('Barang'));">Submit</button><td>
+          </tr>
+        </table>
+      </form>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -219,6 +238,19 @@
   <script src="bower_components/fastclick/lib/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="js/adminlte.min.js"></script>
+  <!-- Mengecek Checkbox -->
+  <script>
+  function getCheckedCheckboxesFor(checkboxName) 
+  {
+    var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked'), values = [];
+    Array.prototype.forEach.call(checkboxes, function(el) 
+    {
+        values.push(el.value);
+    });
+    return values;
+}
+  </script>
+  
 </body>
 
 </html>

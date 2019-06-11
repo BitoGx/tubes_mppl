@@ -6,9 +6,14 @@
   //Session Start
   session_start();
   
-  //Menyimpan Variabel yang di kirim menggunakan method POST
+  /*
+   *Menyimpan Variabel yang di kirim menggunakan method POST
+   *Mengubah isi variabel ke lowercase
+   */
   $username=$_POST['username'];
+  $username = strtolower($username);
   $password=$_POST['password'];
+  $password = strtolower($password);
   
   //Memilih database
   mysqli_select_db($conn,"dellaria");
@@ -54,6 +59,6 @@
   {
     echo "<center><h1>USERNAME DAN PASSWORD SALAH</h1></center>";
     $_SESSION['Loggedin']="false";
-    //header("location: ../login.php");
+    header("Refresh: 10; location: ../login.php");
   }
 ?>
