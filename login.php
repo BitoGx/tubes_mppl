@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['Level']));
+if(isset($_SESSION['Level']))
 {
   $Level = $_SESSION['Level'];
   switch($Level)

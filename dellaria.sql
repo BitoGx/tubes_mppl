@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2019 at 07:16 AM
+-- Generation Time: Jun 12, 2019 at 11:08 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `dellaria`
 --
-
-CREATE DATABASE IF NOT EXISTS dellaria;
+CREATE DATABASE IF NOT EXISTS `dellaria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dellaria`;
 
 -- --------------------------------------------------------
 
@@ -30,18 +30,19 @@ CREATE DATABASE IF NOT EXISTS dellaria;
 -- Table structure for table `barang`
 --
 
-CREATE TABLE `barang` (
-  `IdBarang` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `barang` (
+  `IdBarang` int(11) NOT NULL AUTO_INCREMENT,
   `NamaBarang` varchar(255) NOT NULL,
-  `Jumlah` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Jumlah` int(11) NOT NULL,
+  PRIMARY KEY (`IdBarang`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `barang`
 --
 
 INSERT INTO `barang` (`IdBarang`, `NamaBarang`, `Jumlah`) VALUES
-(1, 'Speaker Aktif', 8),
+(1, 'Speaker Aktif', 11),
 (2, 'Kabel Listrik', 250),
 (3, 'Kabel Speaker', 1000),
 (4, 'Kabel Mic', 500),
@@ -64,17 +65,20 @@ INSERT INTO `barang` (`IdBarang`, `NamaBarang`, `Jumlah`) VALUES
 -- Table structure for table `status_barang`
 --
 
-CREATE TABLE `status_barang` (
+CREATE TABLE IF NOT EXISTS `status_barang` (
   `IdBarang` int(11) NOT NULL,
-  `Baik` int(11) NOT NULL,
-  `Maintanance` int(11) NOT NULL,
-  `Rusak` int(11) NOT NULL
+  `Baik` int(11) NOT NULL DEFAULT '0',
+  `Maintenance` int(11) NOT NULL DEFAULT '0',
+  `Rusak` int(11) NOT NULL DEFAULT '0',
+  KEY `status_barang_ibfk_1` (`IdBarang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `status_barang`
+--
 
-INSERT INTO `status_barang` (`IdBarang`, `Baik`, `Maintanance`,`Rusak`) VALUES
-(1, 8, 0, 0),
+INSERT INTO `status_barang` (`IdBarang`, `Baik`, `Maintenance`, `Rusak`) VALUES
+(1, 8, 2, 1),
 (2, 250, 0, 0),
 (3, 1000, 0, 0),
 (4, 500, 0, 0),
@@ -90,18 +94,22 @@ INSERT INTO `status_barang` (`IdBarang`, `Baik`, `Maintanance`,`Rusak`) VALUES
 (14, 1000, 0, 0),
 (15, 150, 0, 0),
 (16, 8, 0, 0);
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `IdUser` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `IdUser` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `Nama` varchar(255) NOT NULL,
   `Level` enum('1','2','3') NOT NULL,
-  `Status` enum('0','1') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` enum('0','1') NOT NULL,
+  PRIMARY KEY (`IdUser`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -113,44 +121,6 @@ INSERT INTO `user` (`IdUser`, `Username`, `Password`, `Nama`, `Level`, `Status`)
 (3, 'agus', '434e43a262c95c5a345542cdf327222adf18aa93', 'Agus', '1', '1');
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `barang`
---
-ALTER TABLE `barang`
-  ADD PRIMARY KEY (`IdBarang`);
-
---
--- Indexes for table `status_barang`
---
-ALTER TABLE `status_barang`
-  ADD KEY `IdBarang` (`IdBarang`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`IdUser`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `barang`
---
-ALTER TABLE `barang`
-  MODIFY `IdBarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `IdUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- Constraints for dumped tables
 --
 
@@ -158,7 +128,7 @@ ALTER TABLE `user`
 -- Constraints for table `status_barang`
 --
 ALTER TABLE `status_barang`
-  ADD CONSTRAINT `status_barang_ibfk_1` FOREIGN KEY (`IdBarang`) REFERENCES `barang` (`IdBarang`);
+  ADD CONSTRAINT `status_barang_ibfk_1` FOREIGN KEY (`IdBarang`) REFERENCES `barang` (`IdBarang`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
