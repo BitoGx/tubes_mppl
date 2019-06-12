@@ -19,7 +19,7 @@
   {
     echo "<form action='php/tambah_barang.php' method='post' onsubmit='return FormValidation()'>";
     echo "<tr>
-            <td><input type='text' name='NamaBarang' pattern='[A-Za-z]+' required>
+            <td><input type='text' name='NamaBarang' pattern='[A-Za-z ]+' required>
             <td><input type='number' name='Jumlah' min='1' required>
             <td><input type='submit' name='tambah' value='Tambah'>";
     echo "</form>";

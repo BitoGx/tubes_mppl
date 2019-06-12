@@ -39,12 +39,9 @@
       
       //Menjalankan perintah query dan menyimpannya dalam variabel hasil
       $hasil=mysqli_query ($conn,$sql);
-      
-      //Mengambil 1 baris hasil dari perintah query
-      $row=mysqli_fetch_row($hasil);
 
       //Menjalankan perintah perulangan sebanyak yang dibutuhkan
-      if($row)
+      if($hasil)
       {
         //Mempersiapkan Command Query  untuk mengambil barang yang sudah ditambahkan
         $sql="select IdBarang from barang where NamaBarang='$namabarang'";
