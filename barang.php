@@ -9,8 +9,8 @@
       var total_mulai = Total.value;
       var Baik = document.getElementById("Baik");
       var baik = Baik.value;
-      var Maintanance = document.getElementById("Maintanance");
-      var maintanance = Maintanance.value;
+      var Maintenance = document.getElementById("Maintenance");
+      var maintanance = Maintenance.value;
       var Rusak = document.getElementById("Rusak");
       var rusak = Rusak.value;
       var total_akhir = +baik + +maintanance + +rusak;
@@ -51,7 +51,7 @@
       mysqli_select_db($conn,"dellaria");
   
       //Mempersiapkan Command Query  untuk mengambil data IdBarang,NamaBarang,Jumlah,Baik,Maintenance,Rusak berdasarkan IdBarang
-      $sql="select b.IdBarang,b.NamaBarang,b.Jumlah,sb.Baik,sb.Maintanance,sb.Rusak from barang as b,status_barang as sb where b.IdBarang = sb.IdBarang and b.IdBarang=$IdBarang";
+      $sql="select b.IdBarang,b.NamaBarang,b.Jumlah,sb.Baik,sb.Maintenance,sb.Rusak from barang as b,status_barang as sb where b.IdBarang = sb.IdBarang and b.IdBarang=$IdBarang";
   
       //Menjalankan perintah query dan menyimpannya dalam variabel hasil
       $hasil=mysqli_query ($conn,$sql);
@@ -60,7 +60,7 @@
       $row=mysqli_fetch_row($hasil);
       if($row)
       {
-        list($IdBarang,$NamaBarang,$Jumlah,$Baik,$Maintanance,$Rusak)=$row;
+        list($IdBarang,$NamaBarang,$Jumlah,$Baik,$Maintenance,$Rusak)=$row;
         echo "<tr>
                 <th colspan='3'>$NamaBarang</th>
               </tr>
@@ -76,8 +76,8 @@
               </tr>
               <tr>
                 <td>Maintenance</td>
-                <td>$Maintanance</td>
-                <td><input type='number' id='Maintanance' name='Maintanance' value=$Maintanance min='0'></td>
+                <td>$Maintenance</td>
+                <td><input type='number' id='Maintenance' name='Maintenance' value=$Maintenance min='0'></td>
               </tr>
               <tr>
                 <td>Rusak</td>

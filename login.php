@@ -1,3 +1,22 @@
+<?php
+session_start();
+if(isset($_SESSION['Level']));
+{
+  $Level = $_SESSION['Level'];
+  switch($Level)
+  {
+    case 1:
+      header("location: index_teknisi.php");
+    break;
+    case 2:
+      header("location: index_penanggung.php");
+    break;
+    case 3:
+      header("location: index.php");
+    break;
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -13,7 +32,6 @@
     }
   </style>
 </head>
-
 <body class="d-flex justify-content-center  bg-light">
   <div class="d-flex h-100" <div class="d-flex h-100">
     <!-- login box -->

@@ -9,7 +9,7 @@
   //Menyimpan Variabel yang di kirim menggunakan method POST
   $Total = $_POST['Total'];
   $Baik = $_POST['Baik'];
-  $Maintanance = $_POST['Maintanance'];
+  $Maintenance = $_POST['Maintenance'];
   $Rusak = $_POST['Rusak'];
   $IdBarang = $_SESSION['IdBarang'];
      
@@ -17,7 +17,7 @@
   mysqli_select_db($conn,"dellaria");
    
   //Mempersiapkan Command Query  untuk mengupdate data Jumlah,Baik,Maintenance,Rusak berdasarkan IdBarang
-  $sql= "update barang as b,status_barang as sb set b.Jumlah = $Total,sb.Baik = $Baik,sb.Maintanance = $Maintanance,sb.Rusak = $Rusak where b.IdBarang = sb.IdBarang and b.IdBarang=$IdBarang";
+  $sql= "update barang as b,status_barang as sb set b.Jumlah = $Total,sb.Baik = $Baik,sb.Maintenance = $Maintenance,sb.Rusak = $Rusak where b.IdBarang = sb.IdBarang and b.IdBarang=$IdBarang";
       
   //Menjalankan perintah query dan menyimpannya dalam variabel hasil
   $hasil=mysqli_query ($conn,$sql);

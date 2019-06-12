@@ -180,6 +180,15 @@
       </section>
       <!-- Main content -->
       <!-- /.content -->
+      <table border = "1">
+          <tr>
+            <td> Nama Barang </td>
+            <td> Jumlah Barang </td>
+            <td> Edit </td>
+          </tr>
+          <!-- Semua Barang tampil + Checkbox -->
+          <?php require_once "php/tampil_kelola_barang.php"?>
+        </table>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">

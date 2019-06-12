@@ -190,7 +190,7 @@
           </tr>
           <tr>
             <td>Baik</td>
-            <td>Maintanance</td>
+            <td>Maintenance</td>
             <td>Rusak</td>
           </tr>
           <!-- Semua Barang tampil + Checkbox -->
