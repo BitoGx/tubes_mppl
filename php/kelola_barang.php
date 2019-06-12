@@ -1,9 +1,10 @@
 <?php
-  //Memanggil Connection.php
-  require_once "connection.php";
   
   //Session Start
   session_start();
+  
+  //Memanggil Connection.php
+  require_once "connection.php";
   
   //Menyimpan Variabel yang di kirim menggunakan method POST
   $Total = $_POST['Total'];

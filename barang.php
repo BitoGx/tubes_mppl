@@ -17,7 +17,7 @@
       var check = total_mulai - total_akhir;
       if(check != 0)
       {
-        alert("Maaf Total barang "+check+"dari yang seharusnya ");
+        alert("Maaf Total barang "+check+" dari yang seharusnya ");
         return false;
       }
       else
@@ -39,12 +39,13 @@
     if(isset($_POST['IdBarang']))
     {
       
-      //Memanggil Connection.php
-      require_once "php/connection.php";
-      
       //Menyimpan Variabel yang di kirim menggunakan method POST
       $IdBarang=$_POST['IdBarang'];
       $_SESSION['IdBarang']=$IdBarang;
+      $_SESSION['Control'] = "true";
+      
+      //Memanggil Connection.php
+      require_once "php/connection.php";
       
       //Memilih database
       mysqli_select_db($conn,"dellaria");
@@ -66,22 +67,22 @@
               <tr>
                 <td>Jumlah</td>
                 <td>$Jumlah</td>
-                <td><input type='number' id='Total' name='Total' value=$Jumlah></td>
+                <td><input type='number' id='Total' name='Total' value=$Jumlah min='0'></td>
               </tr>
               <tr>
                 <td>Baik</td>
                 <td>$Baik</td>
-                <td><input type='number' id='Baik' name='Baik' value=$Baik></td>
+                <td><input type='number' id='Baik' name='Baik' value=$Baik min='0'></td>
               </tr>
               <tr>
                 <td>Maintenance</td>
                 <td>$Maintanance</td>
-                <td><input type='number' id='Maintanance' name='Maintanance' value=$Maintanance></td>
+                <td><input type='number' id='Maintanance' name='Maintanance' value=$Maintanance min='0'></td>
               </tr>
               <tr>
                 <td>Rusak</td>
                 <td>$Rusak</td>
-                <td><input type='number' id='Rusak' name='Rusak' value=$Rusak></td>
+                <td><input type='number' id='Rusak' name='Rusak' value=$Rusak min='0'></td>
               </tr>";
       }
     }

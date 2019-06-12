@@ -1,16 +1,12 @@
 <?php
   session_start();
-  echo $_SESSION['Loggedin'];
-  //$url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-  //echo $url;
-  //$_SESSION['IdBarang'] = "LOL";
-  echo $_POST['IdBarang'];
-  if(isset($_POST['IdBarang']))
+  if(isset($_POST['username']))
   {
-    echo "True";
+    echo "true";
   }
   else
   {
-    echo "False";
+    echo "false";
   }
+  echo $_SESSION['Control'];
 ?>
