@@ -143,8 +143,6 @@
             </a>
             <ul class="treeview-menu">
               <li><a href=""><i class="fa fa-circle-o"></i>Atur barang</a></li>
-            </ul>
-            <ul class="treeview-menu">
               <li><a href="teknisi_kelola_barang.php"><i class="fa fa-circle-o"></i>Kelola Barang</a></li>
             </ul>
           </li>
