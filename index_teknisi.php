@@ -162,7 +162,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
+              <li><a href="kelola_akun_teknisi.php"><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
             </ul>
           </li>
         </ul>

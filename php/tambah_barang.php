@@ -96,14 +96,6 @@
       {
         //Jika Penambahan Barang gagal akan menampilkan pesan error
         echo "Barang yang ditambahkan gagal";
-        if(isset($_POST['NamaBarang']))
-        {
-          echo "True";
-        }
-        else
-        {
-          echo "Damn";
-        }
         header("Refresh: 10; http://localhost/tubes_mppl/teknisi_kelola_barang.php");
       }
     }

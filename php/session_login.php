@@ -11,7 +11,7 @@
     $username=$_POST['username'];
     $username = strtolower($username);
     $password=$_POST['password'];
-    $password = strtolower($password);
+    $password = $password;
     $_SESSION['Control'] = "true";
     
     //Memanggil fungsi untuk mengecek apakah user sudah login atau belum

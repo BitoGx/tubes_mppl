@@ -62,17 +62,20 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <script language="javascript">
-  function FormValidation()
+  function PassCheck()
   {
-    if (window.confirm('Apa anda yakin akan melakukan operasi ini ?')) 
+    var pass1 = document.getElementById("passbaru1");
+    var pass2 = document.getElementById("passbaru2");
+    if(pass1.value == pass2.value)
     {
       return true;
-    } 
-    else 
+    }
+    else
     {
       return false;
     }
   }
+  
   </script>
 </head>
 
@@ -146,7 +149,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">Menu Utama</li>
-          <li class="active treeview">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-files-o"></i>
               <span>Barang</span>
@@ -167,7 +170,7 @@
               <span>Catatan</span>
             </a>
           </li>
-          <li class="treeview">
+          <li class="active treeview">
             <a href="#">
               <i class="fa fa-table"></i> <span>Akun</span>
               <span class="pull-right-container">
@@ -175,7 +178,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="kelola_akun_teknisi.php"><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
+              <li><a href=""><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
             </ul>
           </li>
         </ul>
@@ -188,20 +191,29 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Menu Kelola Barang
+          Kelola Akun
         </h1>
       </section>
       <!-- Main content -->
       <!-- /.content -->
-      <table border = "1">
+      <form action="php/ganti_password.php" method="post" onsubmit='return PassCheck()'>
+        <table border="1">
           <tr>
-            <td> Nama Barang </td>
-            <td> Jumlah Barang </td>
-            <td> Edit </td>
+            <td>Password Lama : </td>
+            <td><input type="password" name="passlama" id="passlama" required> </td>
           </tr>
-          <!-- Semua Barang tampil + Checkbox -->
-          <?php require_once "php/tampil_kelola_barang.php"?>
+          <tr>
+            <td rowspan="2">Password Baru :</td>
+            <td><input type="password" name="passbaru1" id="passbaru1" pattern="[A-Za-z0-9].{5,}" title="Panjang password minimal 6 huruf dapat terdiri huruf besar/kecil dan angka" required></td>
+          </tr>
+          <tr>
+            <td><input type="password" name="passbaru2" id="passbaru2" pattern="[A-Za-z0-9].{5,}" title="Panjang password minimal 6 huruf dapat terdiri huruf besar/kecil dan angka" required></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="submit" name="submit" value="Submit"></td>
+          </tr>
         </table>
+      </form>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
