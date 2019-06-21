@@ -96,26 +96,12 @@
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="" class="user-image" alt="User Image">
-                <span class="hidden-xs"><?php echo $nama; ?></span>
+                <span class="hidden-xs">Nama : <?php echo $nama; ?></span>
               </a>
-              <ul class="dropdown-menu">
-                <!-- User image -->
-                <li class="user-header">
-                  <img src="" class="img-circle" alt="User Image">
-                  <p>
-                    <?php
-                      echo $nama;
-                    ?>
-                  </p>
-                </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                  <div class="pull-right">
-                    <a href="php/session_logout.php" class="btn btn-default btn-flat">Keluar</a>
-                  </div>
+                    <a href="php/session_logout.php">Keluar</a>
                 </li>
-              </ul>
             </li>
           </ul>
         </div>
@@ -126,24 +112,7 @@
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
         <!-- Sidebar user panel -->
-        <div class="user-panel">
-          <div class="pull-left image">
-            <img src="" class="img-circle" alt="User Image">
-          </div>
-          <div class="pull-left info">
-            <p><?php echo $nama; ?></p>
-          </div>
-        </div>
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search...">
-            <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-          </div>
-        </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
@@ -157,12 +126,12 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="index_teknisi.php"><i class="fa fa-circle-o"></i>Atur barang</a></li>
-              <li><a href="teknisi_kelola_barang.php"><i class="fa fa-circle-o"></i>Kelola Barang</a></li>
+              <li><a href="index_teknisi.php"><i class="fa fa-circle-o"></i>Detail barang</a></li>
+              <li><a href="teknisi_daftar_barang.php"><i class="fa fa-circle-o"></i>Daftar Barang</a></li>
             </ul>
           </li>
           <li>
-            <a href="">
+            <a href="catatan.php">
               <i class="fa fa-circle-o-notch"></i>
               <span>Catatan</span>
             </a>
@@ -184,17 +153,18 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" align="center">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1>
+        <h1 align="center">
           Kelola Akun
         </h1>
+        <br>
       </section>
       <!-- Main content -->
       <!-- /.content -->
       <form action="php/ganti_password.php" method="post" onsubmit='return PassCheck()'>
-        <table border="1">
+        <table class="table table-stripe" style="width:50%">
           <tr>
             <td>Password Lama : </td>
             <td><input type="password" name="passlama" id="passlama" required> </td>
