@@ -75,7 +75,6 @@
       return false;
     }
   }
-
   </script>
 </head>
 
@@ -256,17 +255,6 @@
   <script src="js/adminlte.min.js"></script>
   <!-- Mengecek Checkbox -->
   <script>
-  function getCheckedCheckboxesFor(checkboxName)
-  {
-    var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked'), values = [];
-    Array.prototype.forEach.call(checkboxes, function(el)
-    {
-        values.push(el.value);
-    });
-    return values;
-}
-  </script>
-
 </body>
 
 </html>

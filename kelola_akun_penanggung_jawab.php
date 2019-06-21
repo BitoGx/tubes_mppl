@@ -62,9 +62,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <script language="javascript">
-  function FormValidation()
+  function PassCheck()
   {
-    if (window.confirm('Apa anda yakin akan melakukan operasi ini ?'))
+    var pass1 = document.getElementById("passbaru1");
+    var pass2 = document.getElementById("passbaru2");
+    if(pass1.value == pass2.value)
     {
       return true;
     }
@@ -147,7 +149,7 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">Menu Utama</li>
 
-          <li class="active treeview">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-files-o"></i>
               <span>Penyewaan</span>
@@ -156,7 +158,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o">
+              <li><a href="index_penanggung.php"><i class="fa fa-circle-o">
               </i>Atur penyewaan</a></li>
               <li><a href="kelola_sewa.php"><i class="fa fa-circle-o">
               </i>Kelola Penyewaan</a></li>
@@ -178,7 +180,7 @@
             </ul>
           </li>
 
-          <li class="treeview">
+          <li class="active treeview">
             <a href="#">
               <i class="fa fa-table"></i> <span>Akun</span>
               <span class="pull-right-container">
@@ -186,7 +188,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="kelola_akun_penanggung_jawab.php"><i class="fa fa-circle-o">
+              <li><a href="#"><i class="fa fa-circle-o">
               </i>Kelola Akun saya</a></li>
             </ul>
           </li>
@@ -203,6 +205,24 @@
       </section>
       <!-- Main content -->
       <!-- /.content -->
+      <form action="php/ganti_password.php" method="post" onsubmit='return PassCheck()'>
+        <table border="1">
+          <tr>
+            <td>Password Lama : </td>
+            <td><input type="password" name="passlama" id="passlama" required> </td>
+          </tr>
+          <tr>
+            <td rowspan="2">Password Baru :</td>
+            <td><input type="password" name="passbaru1" id="passbaru1" pattern="[A-Za-z0-9].{5,}" title="Panjang password minimal 6 huruf dapat terdiri huruf besar/kecil dan angka" required></td>
+          </tr>
+          <tr>
+            <td><input type="password" name="passbaru2" id="passbaru2" pattern="[A-Za-z0-9].{5,}" title="Panjang password minimal 6 huruf dapat terdiri huruf besar/kecil dan angka" required></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="submit" name="submit" value="Submit"></td>
+          </tr>
+        </table>
+      </form>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">

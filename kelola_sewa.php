@@ -156,9 +156,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o">
+              <li><a href="index_penanggung.php"><i class="fa fa-circle-o">
               </i>Atur penyewaan</a></li>
-              <li><a href="kelola_sewa.php"><i class="fa fa-circle-o">
+              <li><a href="#"><i class="fa fa-circle-o">
               </i>Kelola Penyewaan</a></li>
             </ul>
           </li>
@@ -203,6 +203,7 @@
       </section>
       <!-- Main content -->
       <!-- /.content -->
+
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">

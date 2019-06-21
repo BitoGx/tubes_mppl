@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2019 at 10:44 AM
+-- Generation Time: Jun 21, 2019 at 10:37 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -30,7 +30,6 @@ USE `dellaria`;
 -- Table structure for table `barang`
 --
 
-DROP TABLE IF EXISTS `barang`;
 CREATE TABLE IF NOT EXISTS `barang` (
   `IdBarang` int(11) NOT NULL AUTO_INCREMENT,
   `NamaBarang` varchar(100) NOT NULL,
@@ -50,7 +49,6 @@ INSERT INTO `barang` (`IdBarang`, `NamaBarang`, `Jumlah`) VALUES
 (5, 'Mic Wireless', 6),
 (6, 'Mic Kabel', 20),
 (7, 'Speaker Pasif', 18),
-(8, 'Power', 6),
 (9, 'Mixer', 4),
 (10, 'Stand Mic', 8),
 (11, 'Tenda Standar', 1000),
@@ -58,7 +56,8 @@ INSERT INTO `barang` (`IdBarang`, `NamaBarang`, `Jumlah`) VALUES
 (13, 'Tenda Seni', 1000),
 (14, 'Kursi', 1000),
 (15, 'Meja', 150),
-(16, 'Panggung', 8);
+(16, 'Panggung', 8),
+(22, 'Power', 6);
 
 -- --------------------------------------------------------
 
@@ -66,7 +65,6 @@ INSERT INTO `barang` (`IdBarang`, `NamaBarang`, `Jumlah`) VALUES
 -- Table structure for table `detail_penyewaan`
 --
 
-DROP TABLE IF EXISTS `detail_penyewaan`;
 CREATE TABLE IF NOT EXISTS `detail_penyewaan` (
   `IdPenyewaan` int(11) NOT NULL,
   `IdBarang` int(11) NOT NULL,
@@ -77,53 +75,12 @@ CREATE TABLE IF NOT EXISTS `detail_penyewaan` (
   KEY `IdBarang` (`IdBarang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `detail_penyewaan`
---
-
-INSERT INTO `detail_penyewaan` (`IdPenyewaan`, `IdBarang`, `JumlahBarang`, `BarangKeluar`, `BarangMasuk`) VALUES
-(212019, 1, 2, 2, 2),
-(212019, 2, 100, 100, 100),
-(212019, 3, 100, 100, 100),
-(212019, 5, 3, 3, 3),
-(212019, 8, 2, 2, 2),
-(212019, 9, 2, 2, 2),
-(212019, 10, 3, 3, 3),
-(212019, 11, 100, 100, 100),
-(212019, 16, 1, 1, 1),
-(612019, 1, 2, 2, 2),
-(612019, 2, 100, 100, 100),
-(612019, 3, 100, 100, 100),
-(612019, 5, 3, 3, 3),
-(612019, 8, 2, 2, 2),
-(612019, 9, 2, 2, 2),
-(612019, 10, 3, 3, 3),
-(612019, 11, 100, 100, 100),
-(612019, 16, 1, 1, 1),
-(1022019, 1, 2, 4, 4),
-(1022019, 2, 100, 200, 200),
-(1022019, 5, 3, 6, 6),
-(1022019, 8, 2, 3, 3),
-(1022019, 9, 2, 3, 3),
-(1022019, 10, 3, 3, 3),
-(1022019, 16, 1, 4, 4),
-(1232019, 1, 2, 2, 2),
-(1232019, 2, 100, 100, 100),
-(1232019, 3, 100, 100, 100),
-(1232019, 4, 50, 50, 50),
-(1232019, 6, 5, 5, 5),
-(1232019, 8, 2, 2, 2),
-(1232019, 9, 2, 2, 2),
-(1232019, 10, 3, 3, 3),
-(1232019, 16, 1, 1, 1);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `penyewaan`
 --
 
-DROP TABLE IF EXISTS `penyewaan`;
 CREATE TABLE IF NOT EXISTS `penyewaan` (
   `IdPenyewaan` int(11) NOT NULL AUTO_INCREMENT,
   `NamaPenyewa` varchar(100) NOT NULL,
@@ -132,17 +89,7 @@ CREATE TABLE IF NOT EXISTS `penyewaan` (
   `Alamat` varchar(150) NOT NULL,
   `Status` enum('Tuntas','Belum') NOT NULL,
   PRIMARY KEY (`IdPenyewaan`)
-) ENGINE=InnoDB AUTO_INCREMENT=1232020 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `penyewaan`
---
-
-INSERT INTO `penyewaan` (`IdPenyewaan`, `NamaPenyewa`, `WaktuSewa`, `WaktuBalik`, `Alamat`, `Status`) VALUES
-(212019, 'Amirudin', '2019-01-02', '2019-01-03', 'Jl.Ciporeat Kelurahan Ujung berung bandung', 'Tuntas'),
-(612019, 'Tita Juwita', '2019-01-06', '2019-01-07', 'Kelurahan Ujung berung kantor keluarhan', 'Tuntas'),
-(1022019, 'Indah Nurhaliza', '2019-02-10', '2019-02-11', 'Kec. Ujung berung Lapangan ujung berung bandung', 'Tuntas'),
-(1232019, 'Anggi Lukmanul hakim', '2019-03-12', '2019-03-14', 'Jl. Bunsari CIwalen, Warung kondang cianjur rumah pak anggi', 'Tuntas');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -150,7 +97,6 @@ INSERT INTO `penyewaan` (`IdPenyewaan`, `NamaPenyewa`, `WaktuSewa`, `WaktuBalik`
 -- Table structure for table `status_barang`
 --
 
-DROP TABLE IF EXISTS `status_barang`;
 CREATE TABLE IF NOT EXISTS `status_barang` (
   `IdBarang` int(11) NOT NULL,
   `Baik` int(11) NOT NULL DEFAULT '0',
@@ -171,7 +117,6 @@ INSERT INTO `status_barang` (`IdBarang`, `Baik`, `Maintenance`, `Rusak`) VALUES
 (5, 6, 0, 0),
 (6, 20, 0, 0),
 (7, 18, 0, 0),
-(8, 0, 0, 0),
 (9, 4, 0, 0),
 (10, 8, 0, 0),
 (11, 1000, 0, 0),
@@ -179,7 +124,8 @@ INSERT INTO `status_barang` (`IdBarang`, `Baik`, `Maintenance`, `Rusak`) VALUES
 (13, 1000, 0, 0),
 (14, 1000, 0, 0),
 (15, 150, 0, 0),
-(16, 8, 0, 0);
+(16, 8, 0, 0),
+(22, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -187,7 +133,6 @@ INSERT INTO `status_barang` (`IdBarang`, `Baik`, `Maintenance`, `Rusak`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `IdUser` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(100) NOT NULL,

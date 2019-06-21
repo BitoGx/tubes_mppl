@@ -11,8 +11,8 @@
   //Mengecek role pengguna
   switch($level)
   {
-    case 1:
-      header("location: ../tubes_mppl/index_teknisi.php");
+    case 2:
+      header("location: ../tubes_mppl/index_penanggung.php");
       exit;
     break;
     case 3:
@@ -147,7 +147,7 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">Menu Utama</li>
 
-          <li class="active treeview">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-files-o"></i>
               <span>Penyewaan</span>
@@ -156,14 +156,14 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o">
+              <li><a href="index_penanggung_jawab.php"><i class="fa fa-circle-o">
               </i>Atur penyewaan</a></li>
-              <li><a href="kelola_sewa.php"><i class="fa fa-circle-o">
+              <li><a href="index_kelola_sewa.php"><i class="fa fa-circle-o">
               </i>Kelola Penyewaan</a></li>
             </ul>
           </li>
 
-          <li class="treeview">
+          <li class="active treeview">
             <a href="#">
               <i class="fa fa-table"></i> <span>Alur Barang</span>
               <span class="pull-right-container">
@@ -171,9 +171,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="alur_keluar.php"><i class="fa fa-circle-o">
+              <li><a href="index_alur_keluar.php"><i class="fa fa-circle-o">
               </i>Alur Keluar</a></li>
-              <li><a href="alur_kembali.php"><i class="fa fa-circle-o">
+              <li><a href=""><i class="fa fa-circle-o">
               </i>Alur kembali</a></li>
             </ul>
           </li>
@@ -200,9 +200,21 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
+        <h1>
+          Menu Kelola Barang
+        </h1>
       </section>
       <!-- Main content -->
       <!-- /.content -->
+      <table border = "1">
+          <tr>
+            <td> Nama Barang </td>
+            <td> Jumlah Barang </td>
+            <td> Edit </td>
+          </tr>
+          <!-- Semua Barang tampil + Checkbox -->
+          <?php require_once "php/tampil_kelola_barang.php"?>
+        </table>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
