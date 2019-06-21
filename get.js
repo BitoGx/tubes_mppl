@@ -1,6 +1,6 @@
 function Search(id) {
     if (id == "") {
-        document.getElementById("JumlahD").innerHTML = "";
+        document.getElementById('JumlahD').innerHTML = "";
         return;
     } else {
         if (window.XMLHttpRequest) {
@@ -15,7 +15,7 @@ function Search(id) {
                 document.getElementById("JumlahD").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","get.php?id="+id,true);
+        xmlhttp.open("GET","get_barang.php?id="+id,true);
         xmlhttp.send();
     }
 }

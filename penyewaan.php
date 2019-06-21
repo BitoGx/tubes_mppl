@@ -1,4 +1,4 @@
-<script type="text/javascript" src="js/get_jumlah_barang.js"></script>
+<script type="text/javascript" src="get.js"></script>
 <html>
 <head>
   <title> Penyewaan </title>
@@ -77,7 +77,7 @@
       
       //tambah barang penyewaan
       $hasil2=mysqli_query ($conn,$sql2);
-      echo "<form action='php/tambah_barang_penyewaan.php' method='post'>";
+      echo "<form action='php/tambah_x.php' method='post'>";
       echo "<tr> <td>";
       echo "<select name='namabarang' onChange='Search(this.value)'>";
       echo "<option value='' disabled selected>Pilih Barang</option>";
