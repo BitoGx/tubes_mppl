@@ -1,3 +1,4 @@
+<script type="text/javascript" src="js/get_jumlah_barang.js"></script>
 <html>
 <head>
   <title> Penyewaan </title>
@@ -35,6 +36,8 @@
       //Mempersiapkan Command Query  untuk mengambil data IdBarang,NamaBarang,Jumlah,Baik,Maintenance,Rusak berdasarkan IdBarang
       $sql="select b.IdBarang,dp.JumlahBarang,b.NamaBarang,sb.Baik from detail_penyewaan as dp,barang as b,status_barang as sb where b.IdBarang=dp.IdBarang and b.IdBarang = sb.IdBarang and dp.IdPenyewaan=$IdPenyewaan ";
   
+      $sql2 = "select IdBarang,NamaBarang from Barang";
+      
       //Menjalankan perintah query dan menyimpannya dalam variabel hasil
       $hasil=mysqli_query ($conn,$sql);
   
@@ -67,8 +70,28 @@
                       <input type='hidden' name='IdBarang' value='$IdBarang'>
                 </tr>";
           echo "</form>";
+          
         }
         while($row=mysqli_fetch_row($hasil));
+		
+        //tambah barang penyewaan
+        $hasil2=mysqli_query ($conn,$sql2);
+        echo "<form action='php/tambah_barang_penyewaan.php' method='post'>";
+        echo "<tr> <td>";
+        echo "<select name='namabarang' onChange='Search(this.value)'>";
+        echo "<option value='' disabled selected>Pilih Barang</option>";
+        while ($row2 = mysqli_fetch_array($hasil2)) 
+        {
+          echo "<option value='" . $row2['IdBarang'] . "'>" . $row2['NamaBarang'] . "</option>";
+        }
+        echo "</select>";
+        echo "<td>A<div id='JumlahD'></div></td>
+              <td>B</td>
+              <td>C</td>
+              <td><input type='submit' name='tambah' value='Tambah'></td>
+              </tr>";
+        
+        
       } 
     }
     else
