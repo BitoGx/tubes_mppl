@@ -200,9 +200,22 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
+        <h1>
+          Menu Utama
+        </h1>
       </section>
       <!-- Main content -->
       <!-- /.content -->
+      <table border = "1">
+        <tr>
+          <td> Nama Penyewa </td>
+          <td> Waktu Sewa </td>
+          <td> Waktu Balik </td>
+          <td> Status </td>
+          <td> Edit </td>
+        </tr>
+        <?php require_once "php/tampil_penyewaan.php"?>
+      </table>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -255,7 +268,7 @@
         values.push(el.value);
     });
     return values;
-}
+  }
   </script>
 
 </body>

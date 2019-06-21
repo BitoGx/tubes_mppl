@@ -58,6 +58,7 @@
   
       //Mengambil 1 baris hasil dari perintah query
       $row=mysqli_fetch_row($hasil);
+      
       if($row)
       {
         list($IdBarang,$NamaBarang,$Jumlah,$Baik,$Maintenance,$Rusak)=$row;
@@ -113,7 +114,6 @@
   <a href="index_teknisi.php">
     <input type="button" value="Batal">
   </a>
-  <input type='hidden' name='total_akhir' value='0'>
   </form>
 </body>
 </html>

@@ -178,22 +178,20 @@
       </section>
       <!-- Main content -->
       <!-- /.content -->
-      <!--<form action="barang.php" method="post">-->
-        <table border = "1">
-          <tr>
-            <td rowspan = "2"> Nama Barang </td>
-            <td rowspan = "2"> Jumlah Barang </td>
-            <td colspan = "3"> Keadaan </td>
-            <td rowspan = "2"> Edit </td>
-          </tr>
-          <tr>
-            <td>Baik</td>
-            <td>Maintenance</td>
-            <td>Rusak</td>
-          </tr>
-          <!-- Semua Barang tampil + Checkbox -->
-          <?php require_once "php/tampil_barang.php"?>
-        </table>
+      <table border = "1">
+        <tr>
+          <td rowspan = "2"> Nama Barang </td>
+          <td rowspan = "2"> Jumlah Barang </td>
+          <td colspan = "3"> Keadaan </td>
+          <td rowspan = "2"> Edit </td>
+        </tr>
+        <tr>
+          <td>Baik</td>
+          <td>Maintenance</td>
+          <td>Rusak</td>
+        </tr>
+        <?php require_once "php/tampil_barang.php"?>
+      </table>
       <!--</form>-->
     </div>
     <!-- /.content-wrapper -->
