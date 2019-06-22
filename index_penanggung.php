@@ -21,7 +21,7 @@
     break;
   }
 ?>
-
+<script type="text/javascript" src="js/get_jumlah_barang.js"></script>
 <html>
 <head>
   <meta charset="utf-8">
