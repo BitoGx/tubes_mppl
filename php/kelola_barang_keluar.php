@@ -75,7 +75,6 @@
     {
       //Memanggil fungsi untuk mengecek apakah user sudah login atau belum
       require_once "session_check_dalam.php";
-      $level = $_SESSION['Level'];
       switch($level)
       {
          case 1:
@@ -92,10 +91,21 @@
         break;
       }
     }
+    $level = $_SESSION['Level'];
+    echo "</table>";
+    switch($level)
+      {
+        case 2:
+          echo "<a href='../alur_keluar.php'><input type='button' value='Batal'></a>";
+          break;
+        break;
+        case 3:
+          echo "<a href='../alur_keluar_utama.php'><input type='button' value='Batal'></a>";
+          break;
+        break;
+      }
   ?>
-  </table>
-  <a href="../alur_keluar.php">
-    <input type="button" value="Batal">
-  </a>
+  
+  
 </body>
 </html>

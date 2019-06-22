@@ -60,7 +60,7 @@
     {
       echo "<center><h1>USERNAME DAN PASSWORD SALAH</h1></center>";
       $_SESSION['Loggedin']="false";
-      header("Refresh: 10; location: ../login.php");
+      header("Refresh: 5; location: ../login.php");
     }
   }
   else

@@ -18,27 +18,32 @@
 
     //Menjalankan perintah query dan menyimpannya dalam variabel hasil
     $hasil=mysqli_query ($conn,$sql);
-
+    
+    $Level = $_SESSION['Level'];
     if($hasil)
     {
-      $Level = $_SESSION['Level'];
       switch($Level)
       {
         case 1:
           header("location: ../teknisi_daftar_barang.php");
         break;
-        case 2:
-         header("location: ../index_penanggung.php");
-        break;
         case 3:
-          header("location: ../index.php");
+          header("location: ../daftar_barang_utama.php");
         break;
       }
     }
     else
     {
       echo "Barang gagal dihapus";
-      header("Refresh: 10; http://localhost/tubes_mppl/teknisi_daftar_barang.php");
+      switch($Level)
+      {
+        case 1:
+          header("Refresh: 5; ../teknisi_daftar_barang.php");
+        break;
+        case 3:
+          header("Refresh: 5; ../daftar_barang_utama.php");
+        break;
+      }  
     }
   }
   else

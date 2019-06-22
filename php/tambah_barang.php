@@ -26,6 +26,8 @@
 
     //Mengambil 1 baris hasil dari perintah query
     $row=mysqli_fetch_row($hasil);
+    
+    $Level = $_SESSION['Level'];
 
     if($row)
     {
@@ -73,38 +75,58 @@
 
           if($hasil)
           {
-            $Level = $_SESSION['Level'];
             switch($Level)
             {
               case 1:
                 header("location: ../teknisi_daftar_barang.php");
               break;
-              case 2:
-                header("location: ../index_penanggung.php");
-              break;
               case 3:
-                header("location: ../index.php");
+                header("location: ../daftar_barang_utama.php");
               break;
             }
           }
           else
           {
             echo "Status Barang yang ditambahkan gagal";
-            header("Refresh: 10; http://localhost/tubes_mppl/teknisi_daftar_barang.php");
+            switch($Level)
+            {
+              case 1:
+                header("Refresh: 5; ../teknisi_daftar_barang.php");
+              break;
+              case 3:
+                header("Refresh: 5; ../daftar_barang_utama.php");
+              break;
+            }
           }
 
         }
         else
         {
           echo "Barang yang ditambahkan tidak ditemukan";
-          header("Refresh: 10; http://localhost/tubes_mppl/teknisi_daftar_barang.php");
+          switch($Level)
+          {
+            case 1:
+              header("Refresh: 5; ../teknisi_daftar_barang.php");
+            break;
+            case 3:
+              header("Refresh: 5; ../daftar_barang_utama.php");
+            break;
+          }
         }
       }
       else
       {
         //Jika Penambahan Barang gagal akan menampilkan pesan error
         echo "Barang yang ditambahkan gagal";
-        header("Refresh: 10; http://localhost/tubes_mppl/teknisi_daftar_barang.php");
+        switch($Level)
+        {
+          case 1:
+            header("Refresh: 5; ../teknisi_daftar_barang.php");
+          break;
+          case 3:
+            header("Refresh: 5; ../daftar_barang_utama.php");
+          break;
+        }
       }
     }
   }

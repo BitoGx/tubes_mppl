@@ -29,7 +29,7 @@
     if($row)
     {
       
-      header("Refresh: 2;http://localhost/tubes_mppl/kelola_akun_utama.php");
+      header("Refresh: 5;../kelola_akun_utama.php");
       echo "Maaf Username sudah digunakan";
     }
     else
@@ -69,15 +69,15 @@
         {
           case 1:
             echo "Username lama yang anda masukkan salah";
-            header("Refresh: 10; http://localhost/tubes_mppl/kelola_akun_teknisi.php");
+            header("Refresh: 5; ../kelola_akun_teknisi.php");
           break;
           case 2:
             echo "Username lama yang anda masukkan salah";
-            header("Refresh: 10; http://localhost/tubes_mppl/kelola_akun_penanggung_jawab.php");
+            header("Refresh: 5; ../kelola_akun_penanggung_jawab.php");
           break;
           case 3:
             echo "Username lama yang anda masukkan salah";
-            header("Refresh: 10; http://localhost/tubes_mppl/kelola_akun_utama.php");
+            header("Refresh: 5; ../kelola_akun_utama.php");
           break;
         }
       }

@@ -117,7 +117,6 @@
     {
       //Memanggil fungsi untuk mengecek apakah user sudah login atau belum
       require_once "php/session_check.php";
-      $level = $_SESSION['Level'];
       switch($level)
       {
          case 1:
@@ -134,12 +133,21 @@
         break;
       }
     }
+    $level = $_SESSION['Level'];
+    echo "</table>";
+    echo "<input type='submit' value='Simpan'>";
+    switch($level)
+      {
+        case 1:
+          echo "<a href='index_teknisi.php'><input type='button' value='Batal'></a>";
+          break;
+        break;
+        case 3:
+          echo "<a href='detail_barang_utama.php'><input type='button' value='Batal'></a>";
+          break;
+        break;
+      }
   ?>
-  </table>
-  <input type="submit" value="Simpan">
-  <a href="index_teknisi.php">
-    <input type="button" value="Batal">
-  </a>
   </form>
 </body>
 </html>

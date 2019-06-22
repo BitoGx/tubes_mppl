@@ -198,12 +198,21 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1>
-          Menu Utama
+        <h1 align="center">
+          Daftar Barang
         </h1>
       </section>
       <!-- Main content -->
       <section class="content">
+      <table align="center" class="table table-stripe" style="width:70%">
+          <tr>
+            <td> Nama Barang </td>
+            <td> Jumlah Barang </td>
+            <td> Edit </td>
+          </tr>
+          <!-- Semua Barang tampil + Checkbox -->
+          <?php require_once "php/tampil_kelola_barang.php"?>
+        </table>
       </section>
       <!-- /.content -->
     </div>
