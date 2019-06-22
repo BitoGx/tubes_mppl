@@ -11,10 +11,12 @@
     $IdPenyewaan = $_POST['IdPenyewaan'];
     $NamaPenyewa = $_POST['NamaPenyewa'];
     $WaktuSewa   = $_POST['WaktuSewa'];
+    $str = str_replace('-', '', $WaktuSewa);
     $WaktuBalik  = $_POST['WaktuBalik'];
     $Alamat      = $_POST['Alamat'];
     $Status      = $_POST['Status'];
     $NamaPenyewa = ucwords($NamaPenyewa);
+    $IdPenyewaan = $IdPenyewaan.$str;
 
     //Memanggil fungsi untuk mengecek apakah user sudah login atau belum
     require_once "connection.php";
@@ -28,10 +30,7 @@
     //Menjalankan perintah query dan menyimpannya dalam variabel hasil
     $hasil=mysqli_query ($conn,$sql);
 
-    //Mengambil 1 baris hasil dari perintah query
-    $row=mysqli_fetch_row($hasil);
-
-    if($row)
+    if($hasil)
     {
       echo "Maaf tanggal yang dipilih tidak tersedia";
       header("Refresh: 10;http://localhost/tubes_mppl/teknisi_daftar_barang.php");
@@ -64,6 +63,7 @@
       else
       {
         //Jika Penambahan Barang gagal akan menampilkan pesan error
+        echo $IdPenyewaan;
         echo "Barang yang ditambahkan gagal";
         header("Refresh: 10; http://localhost/tubes_mppl/kelola_sewa.php");
       }
