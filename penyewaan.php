@@ -1,4 +1,3 @@
-<script type="text/javascript" src="get.js"></script>
 <html>
 <head>
   <title> Penyewaan </title>
@@ -77,20 +76,23 @@
       
       //tambah barang penyewaan
       $hasil2=mysqli_query ($conn,$sql2);
-      echo "<form action='php/tambah_x.php' method='post'>";
+      echo "<tr><td colspan='5'></td></tr>";
+      echo "<form action='php/tambah_barang_penyewaan.php' method='post'>";
       echo "<tr> <td>";
-      echo "<select name='namabarang' onChange='Search(this.value)'>";
+      echo "<select name='namabarangp' onChange='Search(this.value)'>";
       echo "<option value='' disabled selected>Pilih Barang</option>";
       while ($row2 = mysqli_fetch_array($hasil2)) 
       {
         echo "<option value='" . $row2['IdBarang'] . "'>" . $row2['NamaBarang'] . "</option>";
       }
       echo "</select>";
-      echo "<td>A<div id='JumlahD'></div></td>
-            <td>B</td>
-            <td>C</td>
-            <td><input type='submit' name='tambah' value='Tambah'></td>
+      echo "<td></td>
+            <td></td>
+            <td></td>
+            <td><input type='submit' name='tambah' value='Tambah'>
+                <input type='hidden' name='IdPenyewaan' value='$IdPenyewaan'></td>
             </tr>";
+      echo "</form>";      
     }
     else
     {
