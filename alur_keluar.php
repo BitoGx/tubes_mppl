@@ -195,6 +195,7 @@
       <table border="1">
         <tr>
           <td>Nama Penyewa</td>
+          <td>Waktu Penyewaan</td>
           <td>Barang Keluar</td>
         </tr>
         <?php require_once "php/tampil_alur_keluar.php"?>
