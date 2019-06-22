@@ -30,7 +30,15 @@
     if($row)
     {
       echo "Maaf barang sudah ada di dalam database";
-      header("Refresh: 10;http://localhost/tubes_mppl/teknisi_daftar_barang.php");
+      switch($Level)
+      {
+        case 1:
+          header("Refresh: 5; ../teknisi_daftar_barang.php");
+        break;
+        case 3:
+          header("Refresh: 5; ../daftar_barang_utama.php");
+        break;
+      }
     }
     else
     {
