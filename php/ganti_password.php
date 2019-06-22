@@ -28,7 +28,6 @@
     
     if($hasil)
     {
-      
       $Level = $_SESSION['Level'];
       switch($Level)
       {
@@ -45,8 +44,22 @@
     }
     else
     {
-      echo "Password lama yang anda masukkan salah";
-      header("Refresh: 10; http://localhost/tubes_mppl/kelola_akun_teknisi.php");
+      $Level = $_SESSION['Level'];
+      switch($Level)
+      {
+        case 1:
+          echo "Password lama yang anda masukkan salah";
+          header("Refresh: 10; http://localhost/tubes_mppl/kelola_akun_teknisi.php");
+        break;
+        case 2:
+          echo "Password lama yang anda masukkan salah";
+          header("Refresh: 10; http://localhost/tubes_mppl/kelola_akun_penanggung_jawab.php");
+        break;
+        case 3:
+          echo "Password lama yang anda masukkan salah";
+          header("Refresh: 10; http://localhost/tubes_mppl/kelola_akun_utama.php");
+        break;
+      }
     }
   }
   else

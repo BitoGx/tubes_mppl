@@ -64,29 +64,35 @@
   <script language="javascript">
   function PassCheck()
   {
+    var passlama = document.getElementById("passlama")
     var pass1 = document.getElementById("passbaru1");
     var pass2 = document.getElementById("passbaru2");
-    if(pass1.value == pass2.value)
+    if(passlama.value == passl1)
     {
-      return true;
+      alert("Password lama tidak boleh sama dengan password yang baru");
+      return false;
     }
     else
     {
-      alert("Passwod yang anda masukkan tidak sama");
-      return false;
+      if(pass1.value == pass2.value)
+      {
+        return true;
+      }
+      else
+      {
+        alert("Passwod yang anda masukkan tidak sama");
+        return false;
+      }
     }
   }
 
   function UserCheck()
   {
-    var user1 = document.getElementById("userbaru1");
-    var user2 = document.getElementById("userbaru2");
+    var user1 = document.getElementById("userbaru");
     var user3 = document.getElementById("userlama");
     var userbaru1 = user1.value;
-    var userbaru2 = user2.value;
     var userlama = user3.value;
     userbaru1 = userbaru1.toLowerCase();
-    userbaru2 = userbaru2.toLowerCase();
     userlama  = userlama.toLowerCase();
     if((userbaru1 == userlama) || (userbaru2 == userlama)) 
     {
@@ -95,13 +101,12 @@
     }
     else
     {
-      if(userbaru1 == userbaru2)
+      if (window.confirm('Apa anda yakin akan melakukan operasi ini ?'))
       {
         return true;
       }
       else
       {
-        alert("Username yang anda masukkan tidak sama");
         return false;
       }
     }
@@ -258,11 +263,8 @@
               <td><input type="text" name="userlama" id="userlama" required> </td>
             </tr>
             <tr>
-              <td rowspan="2">Username Baru :</td>
-              <td><input type="text" name="userbaru1" id="userbaru1" required></td>
-            </tr>
-            <tr>
-              <td><input type="text" name="userbaru2" id="userbaru2" required></td>
+              <td>Username Baru :</td>
+              <td><input type="text" name="userbaru" id="userbaru" required></td>
             </tr>
             <tr>
               <td colspan="2"><input type="submit" name="submit" value="Submit"></td>

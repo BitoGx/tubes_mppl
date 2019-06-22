@@ -64,16 +64,25 @@
   <script language="javascript">
   function PassCheck()
   {
+    var passlama = document.getElementById("passlama")
     var pass1 = document.getElementById("passbaru1");
     var pass2 = document.getElementById("passbaru2");
-    if(pass1.value == pass2.value)
+    if(passlama.value == passl1)
     {
-      return true;
+      alert("Password lama tidak boleh sama dengan password yang baru");
+      return false;
     }
     else
     {
-      alert("Passwod yang anda masukkan tidak sama");
-      return false;
+      if(pass1.value == pass2.value)
+      {
+        return true;
+      }
+      else
+      {
+        alert("Passwod yang anda masukkan tidak sama");
+        return false;
+      }
     }
   }
   </script>
