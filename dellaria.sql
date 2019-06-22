@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2019 at 10:44 AM
+-- Generation Time: Jun 22, 2019 at 02:57 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `dellaria`
 --
-CREATE DATABASE IF NOT EXISTS `dellaria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `dellaria`;
 
 -- --------------------------------------------------------
 
@@ -30,13 +28,12 @@ USE `dellaria`;
 -- Table structure for table `barang`
 --
 
-DROP TABLE IF EXISTS `barang`;
 CREATE TABLE IF NOT EXISTS `barang` (
   `IdBarang` int(11) NOT NULL AUTO_INCREMENT,
   `NamaBarang` varchar(100) NOT NULL,
   `Jumlah` int(11) NOT NULL,
   PRIMARY KEY (`IdBarang`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `barang`
@@ -66,11 +63,10 @@ INSERT INTO `barang` (`IdBarang`, `NamaBarang`, `Jumlah`) VALUES
 -- Table structure for table `detail_penyewaan`
 --
 
-DROP TABLE IF EXISTS `detail_penyewaan`;
 CREATE TABLE IF NOT EXISTS `detail_penyewaan` (
   `IdPenyewaan` int(11) NOT NULL,
   `IdBarang` int(11) NOT NULL,
-  `JumlahBarang` int(11) NOT NULL,
+  `JumlahBarang` int(11) NOT NULL DEFAULT '0',
   `BarangKeluar` int(11) NOT NULL DEFAULT '0',
   `BarangMasuk` int(11) NOT NULL DEFAULT '0',
   KEY `IdPenyewaan` (`IdPenyewaan`),
@@ -99,23 +95,7 @@ INSERT INTO `detail_penyewaan` (`IdPenyewaan`, `IdBarang`, `JumlahBarang`, `Bara
 (612019, 9, 2, 2, 2),
 (612019, 10, 3, 3, 3),
 (612019, 11, 100, 100, 100),
-(612019, 16, 1, 1, 1),
-(1022019, 1, 2, 4, 4),
-(1022019, 2, 100, 200, 200),
-(1022019, 5, 3, 6, 6),
-(1022019, 8, 2, 3, 3),
-(1022019, 9, 2, 3, 3),
-(1022019, 10, 3, 3, 3),
-(1022019, 16, 1, 4, 4),
-(1232019, 1, 2, 2, 2),
-(1232019, 2, 100, 100, 100),
-(1232019, 3, 100, 100, 100),
-(1232019, 4, 50, 50, 50),
-(1232019, 6, 5, 5, 5),
-(1232019, 8, 2, 2, 2),
-(1232019, 9, 2, 2, 2),
-(1232019, 10, 3, 3, 3),
-(1232019, 16, 1, 1, 1);
+(612019, 16, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -123,7 +103,6 @@ INSERT INTO `detail_penyewaan` (`IdPenyewaan`, `IdBarang`, `JumlahBarang`, `Bara
 -- Table structure for table `penyewaan`
 --
 
-DROP TABLE IF EXISTS `penyewaan`;
 CREATE TABLE IF NOT EXISTS `penyewaan` (
   `IdPenyewaan` int(11) NOT NULL AUTO_INCREMENT,
   `NamaPenyewa` varchar(100) NOT NULL,
@@ -132,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `penyewaan` (
   `Alamat` varchar(150) NOT NULL,
   `Status` enum('Tuntas','Belum') NOT NULL,
   PRIMARY KEY (`IdPenyewaan`)
-) ENGINE=InnoDB AUTO_INCREMENT=1232020 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=612020 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `penyewaan`
@@ -140,9 +119,7 @@ CREATE TABLE IF NOT EXISTS `penyewaan` (
 
 INSERT INTO `penyewaan` (`IdPenyewaan`, `NamaPenyewa`, `WaktuSewa`, `WaktuBalik`, `Alamat`, `Status`) VALUES
 (212019, 'Amirudin', '2019-01-02', '2019-01-03', 'Jl.Ciporeat Kelurahan Ujung berung bandung', 'Tuntas'),
-(612019, 'Tita Juwita', '2019-01-06', '2019-01-07', 'Kelurahan Ujung berung kantor keluarhan', 'Tuntas'),
-(1022019, 'Indah Nurhaliza', '2019-02-10', '2019-02-11', 'Kec. Ujung berung Lapangan ujung berung bandung', 'Tuntas'),
-(1232019, 'Anggi Lukmanul hakim', '2019-03-12', '2019-03-14', 'Jl. Bunsari CIwalen, Warung kondang cianjur rumah pak anggi', 'Tuntas');
+(612019, 'Tita Juwita', '2019-01-06', '2019-01-07', 'Kelurahan Ujung berung kantor keluarhan', 'Tuntas');
 
 -- --------------------------------------------------------
 
@@ -150,7 +127,6 @@ INSERT INTO `penyewaan` (`IdPenyewaan`, `NamaPenyewa`, `WaktuSewa`, `WaktuBalik`
 -- Table structure for table `status_barang`
 --
 
-DROP TABLE IF EXISTS `status_barang`;
 CREATE TABLE IF NOT EXISTS `status_barang` (
   `IdBarang` int(11) NOT NULL,
   `Baik` int(11) NOT NULL DEFAULT '0',
@@ -187,7 +163,6 @@ INSERT INTO `status_barang` (`IdBarang`, `Baik`, `Maintenance`, `Rusak`) VALUES
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `IdUser` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(100) NOT NULL,
@@ -215,8 +190,8 @@ INSERT INTO `user` (`IdUser`, `Username`, `Password`, `Nama`, `Level`, `Status`)
 -- Constraints for table `detail_penyewaan`
 --
 ALTER TABLE `detail_penyewaan`
-  ADD CONSTRAINT `detail_penyewaan_ibfk_1` FOREIGN KEY (`IdPenyewaan`) REFERENCES `penyewaan` (`IdPenyewaan`) ON DELETE NO ACTION,
-  ADD CONSTRAINT `detail_penyewaan_ibfk_2` FOREIGN KEY (`IdBarang`) REFERENCES `barang` (`IdBarang`) ON DELETE NO ACTION;
+  ADD CONSTRAINT `detail_penyewaan_ibfk_1` FOREIGN KEY (`IdPenyewaan`) REFERENCES `penyewaan` (`IdPenyewaan`) ON DELETE CASCADE,
+  ADD CONSTRAINT `detail_penyewaan_ibfk_2` FOREIGN KEY (`IdBarang`) REFERENCES `barang` (`IdBarang`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `status_barang`

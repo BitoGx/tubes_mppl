@@ -60,20 +60,6 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-  <script language="javascript">
-  function FormValidation()
-  {
-    if (window.confirm('Apa anda yakin akan melakukan operasi ini ?'))
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  }
-  </script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -200,9 +186,19 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
+        <h1 align="center">
+          Alur Barang Keluar
+        </h1>
       </section>
       <!-- Main content -->
       <!-- /.content -->
+      <table border="1">
+        <tr>
+          <td>Nama Penyewa</td>
+          <td>Barang Keluar</td>
+        </tr>
+        <?php require_once "php/tampil_alur_keluar.php"?>
+      </table>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
