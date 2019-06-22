@@ -1,13 +1,13 @@
 <?php
   //Memanggil fungsi untuk mengecek apakah user sudah login atau belum
   require_once "php/session_check.php";
-  
+
   //Menyimpan data dari session
   $id      = $_SESSION['Id'];
   $nama    = $_SESSION['Nama'];
   $level   = $_SESSION['Level'];
   $jobdesc = $_SESSION['JobDesc'];
-  
+
   //Mengecek role pengguna
   switch($level)
   {
@@ -20,7 +20,7 @@
       exit;
     break;
   }
-  
+
 ?>
 
 <html>
@@ -89,7 +89,7 @@
                 <li class="user-header">
                   <img src="" class="img-circle" alt="User Image">
                   <p>
-                    <?php 
+                    <?php
                       echo $nama;
                     ?>
                   </p>
@@ -134,7 +134,7 @@
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">Menu Utama</li>
           <li class="active">
-            <a href="index.html">
+            <a href="index.php">
               <i class="fa fa-circle-o-notch"></i>
               <span>Alur Waktu</span>
             </a>
@@ -147,8 +147,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Kelola Penyewa</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Data Hasil Sewa</a></li>
+              <li><a href="detail_penyewaan_utama.php"><i class="fa fa-circle-o"></i>Detail Penyewaan</a></li>
+              <li><a href="daftar_penyewaan_utama.php"><i class="fa fa-circle-o"></i>Daftar penyewaan</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -160,21 +160,21 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Kelola barang</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Data Hasil Barang</a></li>
+              <li><a href="detail_barang_utama.php"><i class="fa fa-circle-o"></i>Detail barang</a></li>
+              <li><a href="daftar_barang_utama.php"><i class="fa fa-circle-o"></i>Daftar Barang</a></li>
             </ul>
           </li>
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-arrows"></i>
-              <span>Kelola Alur Barang</span>
+              <i class="fa fa-table"></i>
+              <span>Alur barang</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i> Barang Masuk</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i> barang Keluar</a></li>
+              <li><a href="alur_keluar_utama.php"><i class="fa fa-circle-o"></i>alur barang keluar</a></li>
+              <li><a href="alur_kembali_utama.php"><i class="fa fa-circle-o"></i>alur barang kembali</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -185,8 +185,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i>Kelola Semua Akun</a></li>
+              <li><a href="kelola_akun_utama.php"><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
+              <li><a href="kelola_akun_semua_utama.php"><i class="fa fa-circle-o"></i>Kelola Semua Akun</a></li>
             </ul>
           </li>
         </ul>
@@ -204,83 +204,6 @@
       </section>
       <!-- Main content -->
       <section class="content">
-      
-        <!-- row -->
-        <div class="row">
-          <div class="col-md-12">
-            <!-- The time line -->
-            <ul class="timeline">
-              <!-- timeline time label -->
-              <li class="time-label">
-                <span class="bg-red">
-                  10 Feb. 2014
-                </span>
-              </li>
-              <!-- /.timeline-label -->
-              <!-- timeline item -->
-              <li>
-                <i class="fa fa-envelope bg-blue"></i>
-
-                <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                  <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                  <div class="timeline-body">
-                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                    quora plaxo ideeli hulu weebly balihoo...
-                  </div>
-                  <div class="timeline-footer">
-                    <a class="btn btn-primary btn-xs">Read more</a>
-                    <a class="btn btn-danger btn-xs">Delete</a>
-                  </div>
-                </div>
-              </li>
-              <!-- END timeline item -->
-              <!-- timeline item -->
-              <li>
-                <i class="fa fa-user bg-aqua"></i>
-
-                <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                  <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-                </div>
-              </li>
-              <!-- END timeline item -->
-              <!-- timeline item -->
-              <!-- END timeline item -->
-              <!-- timeline time label -->
-              <li class="time-label">
-                <span class="bg-green">
-                  3 Jan. 2014
-                </span>
-              </li>
-              <!-- /.timeline-label -->
-              <!-- timeline item -->
-              <li>
-                <i class="fa fa-camera bg-purple"></i>
-
-                <div class="timeline-item">
-                  <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-                  <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-                </div>
-              </li>
-              <!-- END timeline item -->
-              <!-- timeline item -->
-              <!-- END timeline item -->
-              <li>
-                <i class="fa fa-clock-o bg-gray"></i>
-              </li>
-            </ul>
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-        <!-- /.row -->
-
       </section>
       <!-- /.content -->
     </div>

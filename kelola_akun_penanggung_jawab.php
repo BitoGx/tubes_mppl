@@ -72,6 +72,7 @@
     }
     else
     {
+      alert("Passwod yang anda masukkan tidak sama");
       return false;
     }
   }

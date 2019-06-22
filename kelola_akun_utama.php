@@ -11,12 +11,12 @@
   //Mengecek role pengguna
   switch($level)
   {
-    case 2:
-      header("location: ../tubes_mppl/index_penanggung.php");
+    case 1:
+      header("location: ../tubes_mppl/index_teknisi.php");
       exit;
     break;
-    case 3:
-      header("location: ../tubes_mppl/index.php");
+    case 2:
+      header("location: ../tubes_mppl/index_penanggung.php");
       exit;
     break;
   }
@@ -60,7 +60,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+  
   <script language="javascript">
   function PassCheck()
   {
@@ -74,6 +74,36 @@
     {
       alert("Passwod yang anda masukkan tidak sama");
       return false;
+    }
+  }
+
+  function UserCheck()
+  {
+    var user1 = document.getElementById("userbaru1");
+    var user2 = document.getElementById("userbaru2");
+    var user3 = document.getElementById("userlama");
+    var userbaru1 = user1.value;
+    var userbaru2 = user2.value;
+    var userlama = user3.value;
+    userbaru1 = userbaru1.toLowerCase();
+    userbaru2 = userbaru2.toLowerCase();
+    userlama  = userlama.toLowerCase();
+    if((userbaru1 == userlama) || (userbaru2 == userlama)) 
+    {
+      alert("Maaf username tidak boleh sama dengan sebelumnya");
+      return false;
+    }
+    else
+    {
+      if(userbaru1 == userbaru2)
+      {
+        return true;
+      }
+      else
+      {
+        alert("Username yang anda masukkan tidak sama");
+        return false;
+      }
     }
   }
   </script>
@@ -98,12 +128,26 @@
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs">Nama : <?php echo $nama; ?></span>
+                <img src="" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?php echo $nama; ?></span>
               </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img src="" class="img-circle" alt="User Image">
+                  <p>
+                    <?php
+                      echo $nama;
+                    ?>
+                  </p>
+                </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                    <a href="php/session_logout.php">Keluar</a>
+                  <div class="pull-right">
+                    <a href="php/session_logout.php" class="btn btn-default btn-flat">Keluar</a>
+                  </div>
                 </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -114,11 +158,46 @@
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
         <!-- Sidebar user panel -->
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img src="" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+            <p><?php echo $nama; ?></p>
+          </div>
+        </div>
         <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">Menu Utama</li>
+          <li class="active">
+            <a href="index.php">
+              <i class="fa fa-circle-o-notch"></i>
+              <span>Alur Waktu</span>
+            </a>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-user"></i> <span>Penyewaan</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="detail_penyewaan_utama.php"><i class="fa fa-circle-o"></i>Detail Penyewaan</a></li>
+              <li><a href="daftar_penyewaan_utama.php"><i class="fa fa-circle-o"></i>Daftar penyewaan</a></li>
+            </ul>
+          </li>
           <li class="treeview">
             <a href="#">
               <i class="fa fa-files-o"></i>
@@ -128,17 +207,24 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="index_teknisi.php"><i class="fa fa-circle-o"></i>Detail barang</a></li>
-              <li><a href="teknisi_daftar_barang.php"><i class="fa fa-circle-o"></i>Daftar Barang</a></li>
+              <li><a href="detail_barang_utama.php"><i class="fa fa-circle-o"></i>Detail barang</a></li>
+              <li><a href="daftar_barang_utama.php"><i class="fa fa-circle-o"></i>Daftar Barang</a></li>
             </ul>
           </li>
-          <li>
-            <a href="catatan.php">
-              <i class="fa fa-circle-o-notch"></i>
-              <span>Catatan</span>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-table"></i>
+              <span>Alur barang</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
+            <ul class="treeview-menu">
+              <li><a href="alur_keluar_utama.php"><i class="fa fa-circle-o"></i>alur barang keluar</a></li>
+              <li><a href="alur_kembali_utama.php"><i class="fa fa-circle-o"></i>alur barang kembali</a></li>
+            </ul>
           </li>
-          <li class="active treeview">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-table"></i> <span>Akun</span>
               <span class="pull-right-container">
@@ -146,7 +232,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Kelola Akun saya</a></li>
+              <li><a href="kelola_akun_semua_utama.php"><i class="fa fa-circle-o"></i>Kelola Semua Akun</a></li>
             </ul>
           </li>
         </ul>
@@ -155,34 +242,53 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" align="center">
+    <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1 align="center">
+        <h1>
           Kelola Akun
         </h1>
-        <br>
       </section>
       <!-- Main content -->
+      <section class="content">
+        <form action="php/ganti_username.php" method="post" onsubmit='return UserCheck()'>
+          <table class="table table-stripe" style="width:50%">
+            <tr>
+              <td>Username Lama : </td>
+              <td><input type="text" name="userlama" id="userlama" required> </td>
+            </tr>
+            <tr>
+              <td rowspan="2">Username Baru :</td>
+              <td><input type="text" name="userbaru1" id="userbaru1" required></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="userbaru2" id="userbaru2" required></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="submit" name="submit" value="Submit"></td>
+            </tr>
+          </table>
+        </form>
+        <form action="php/ganti_password.php" method="post" onsubmit='return PassCheck()'>
+          <table class="table table-stripe" style="width:50%">
+            <tr>
+              <td>Password Lama : </td>
+              <td><input type="password" name="passlama" id="passlama" required> </td>
+            </tr>
+            <tr>
+              <td rowspan="2">Password Baru :</td>
+              <td><input type="password" name="passbaru1" id="passbaru1" pattern="[A-Za-z0-9].{5,}" title="Panjang password minimal 6 huruf dapat terdiri huruf besar/kecil dan angka" required></td>
+            </tr>
+            <tr>
+              <td><input type="password" name="passbaru2" id="passbaru2" pattern="[A-Za-z0-9].{5,}" title="Panjang password minimal 6 huruf dapat terdiri huruf besar/kecil dan angka" required></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="submit" name="submit" value="Submit"></td>
+            </tr>
+          </table>
+        </form>
+      </section>
       <!-- /.content -->
-      <form action="php/ganti_password.php" method="post" onsubmit='return PassCheck()'>
-        <table class="table table-stripe" style="width:50%">
-          <tr>
-            <td>Password Lama : </td>
-            <td><input type="password" name="passlama" id="passlama" required> </td>
-          </tr>
-          <tr>
-            <td rowspan="2">Password Baru :</td>
-            <td><input type="password" name="passbaru1" id="passbaru1" pattern="[A-Za-z0-9].{5,}" title="Panjang password minimal 6 huruf dapat terdiri huruf besar/kecil dan angka" required></td>
-          </tr>
-          <tr>
-            <td><input type="password" name="passbaru2" id="passbaru2" pattern="[A-Za-z0-9].{5,}" title="Panjang password minimal 6 huruf dapat terdiri huruf besar/kecil dan angka" required></td>
-          </tr>
-          <tr>
-            <td colspan="2"><input type="submit" name="submit" value="Submit"></td>
-          </tr>
-        </table>
-      </form>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -225,8 +331,6 @@
   <script src="bower_components/fastclick/lib/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="js/adminlte.min.js"></script>
-  <!-- Mengecek Checkbox -->
-  <script>
 </body>
 
 </html>

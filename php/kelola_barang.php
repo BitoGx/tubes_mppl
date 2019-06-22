@@ -46,6 +46,7 @@
     else
     {
       echo "Data Gagal Di Ubah";
+      header("Refresh: 10; http://localhost/tubes_mppl/barang.php");
     }
   }
   else
