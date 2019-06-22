@@ -30,7 +30,7 @@
     if($row)
     {
       echo "Maaf barang sudah ada di dalam database";
-      header("Refresh: 5; ../penyewaan.php");
+      header("Refresh: 5; http://localhost/tubes_mppl/penyewaan.php");
     }
     else
     {
@@ -55,19 +55,19 @@
         //Mengecek apakah barang yang dimasukan tadi ditemukan atau tidak
         if($row)
         {
-          header("location: ../penyewaan.php");
+          header("location: http://localhost/tubes_mppl/penyewaan.php");
         }
         else
         {
           echo "Barang yang ditambahkan tidak ditemukan";
-          header("Refresh: 5; ../penyewaan.php");
+          header("Refresh: 5; http://localhost/tubes_mppl/penyewaan.php");
         }
       }
       else
       {
         //Jika Penambahan Barang gagal akan menampilkan pesan error
         echo "Barang yang ditambahkan gagal";
-        header("Refresh: 5; ../penyewaan.php");
+        header("Refresh: 5; http://localhost/tubes_mppl/penyewaan.php");
       }
     }
   }
