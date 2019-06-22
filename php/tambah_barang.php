@@ -2,8 +2,6 @@
   //Session Start
   session_start();
  
-  ob_start();
-
   if(isset($_POST['NamaBarang']))
   {
     /*
@@ -31,9 +29,8 @@
 
     if($row)
     {
-      
-      header("Refresh: 2;http://localhost/tubes_mppl/teknisi_daftar_barang.php");
       echo "Maaf barang sudah ada di dalam database";
+      header("Refresh: 10;http://localhost/tubes_mppl/teknisi_daftar_barang.php");
     }
     else
     {

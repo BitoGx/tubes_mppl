@@ -200,10 +200,15 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
+        <h1>
+          Menu Utama
+        </h1>
       </section>
       <!-- Main content -->
       <!-- /.content -->
-
+      <table border = "1">
+        <?php require_once "php/tampil_kelola_penyewaan.php"?>
+      </table>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
