@@ -20,7 +20,6 @@
       exit;
     break;
   }
-
 ?>
 
 <html>
@@ -61,6 +60,22 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <script language="javascript">
+  function PassCheck()
+  {
+    var pass1 = document.getElementById("passbaru1");
+    var pass2 = document.getElementById("passbaru2");
+    if(pass1.value == pass2.value)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  </script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -102,7 +117,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">Menu Utama</li>
-          <li class="active treeview">
+          <li class="treeview">
             <a href="#">
               <i class="fa fa-files-o"></i>
               <span>Barang</span>
@@ -111,17 +126,17 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i>Detail barang</a></li>
+              <li><a href="index_teknisi.php"><i class="fa fa-circle-o"></i>Detail barang</a></li>
               <li><a href="teknisi_daftar_barang.php"><i class="fa fa-circle-o"></i>Daftar Barang</a></li>
             </ul>
           </li>
           <li>
-            <a href="catatan.php">
+            <a href="#">
               <i class="fa fa-circle-o-notch"></i>
               <span>Catatan</span>
             </a>
           </li>
-          <li class="treeview">
+          <li class="active treeview">
             <a href="#">
               <i class="fa fa-table"></i> <span>Akun</span>
               <span class="pull-right-container">
@@ -138,31 +153,16 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" align="center">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1 align="center">
-          Detail barang || Menu Utama
+          Kelola Catatan
         </h1>
+        <br>
       </section>
       <!-- Main content -->
       <!-- /.content -->
-      <br>
-      <table align="center" class="table table-stripe" style="width:70%">
-        <tr>
-          <td rowspan = "2"> Nama Barang </td>
-          <td rowspan = "2"> Jumlah Barang </td>
-          <td colspan = "3"> Keadaan </td>
-          <td rowspan = "2"> Edit </td>
-        </tr>
-        <tr>
-          <td>Baik</td>
-          <td>Maintenance</td>
-          <td>Rusak</td>
-        </tr>
-        <?php require_once "php/tampil_barang.php"?>
-      </table>
-      <!--</form>-->
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -206,6 +206,6 @@
   <!-- AdminLTE App -->
   <script src="js/adminlte.min.js"></script>
   <!-- Mengecek Checkbox -->
+  <script>
 </body>
-
 </html>
