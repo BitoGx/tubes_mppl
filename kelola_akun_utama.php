@@ -67,7 +67,7 @@
     var passlama = document.getElementById("passlama")
     var pass1 = document.getElementById("passbaru1");
     var pass2 = document.getElementById("passbaru2");
-    if(passlama.value == passl1)
+    if((passlama.value == passl1.value) || (passlama.value == pass2.value))
     {
       alert("Password lama tidak boleh sama dengan password yang baru");
       return false;
