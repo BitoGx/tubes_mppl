@@ -208,7 +208,7 @@
       <table border="1">
         <tr>
           <td>Nama Penyewa</td>
-          <td>Waktu Penyewaan</td>
+          <td>Waktu Kembali</td>
           <td>Edit</td>
         </tr>
         <?php require_once "php/tampil_alur_kembali.php"?>

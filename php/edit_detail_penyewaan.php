@@ -57,11 +57,25 @@
           exit;
         break;
       }
-      
     }
     else
     {
       echo "Data Gagal Di Ubah";
+      switch($Action)
+      {
+         case "Atur":
+          header("location: ../penyewaan.php");
+          exit;
+        break;
+        case "Keluar":
+          header("location: kelola_barang_keluar.php");
+          exit;
+        break;
+        case "Masuk":
+          header("location: kelola_barang_kembali.php");
+          exit;
+        break;
+      }
     }
   }
   else
