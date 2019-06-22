@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2019 at 02:57 PM
+-- Generation Time: Jun 23, 2019 at 01:04 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `dellaria`
 --
+CREATE DATABASE IF NOT EXISTS `dellaria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `dellaria`;
 
 -- --------------------------------------------------------
 
@@ -40,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `barang` (
 --
 
 INSERT INTO `barang` (`IdBarang`, `NamaBarang`, `Jumlah`) VALUES
-(1, 'Speaker Aktif', 11),
+(1, 'Speaker Aktif', 12),
 (2, 'Kabel Listrik', 250),
 (3, 'Kabel Speaker', 1000),
 (4, 'Kabel Mic', 500),
@@ -64,13 +66,13 @@ INSERT INTO `barang` (`IdBarang`, `NamaBarang`, `Jumlah`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `detail_penyewaan` (
-  `IdPenyewaan` int(11) NOT NULL,
+  `IdPenyewaan` bigint(20) NOT NULL,
   `IdBarang` int(11) NOT NULL,
   `JumlahBarang` int(11) NOT NULL DEFAULT '0',
   `BarangKeluar` int(11) NOT NULL DEFAULT '0',
   `BarangMasuk` int(11) NOT NULL DEFAULT '0',
-  KEY `IdPenyewaan` (`IdPenyewaan`),
-  KEY `IdBarang` (`IdBarang`)
+  KEY `IdBarang` (`IdBarang`),
+  KEY `IdPenyewaan` (`IdPenyewaan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -78,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `detail_penyewaan` (
 --
 
 INSERT INTO `detail_penyewaan` (`IdPenyewaan`, `IdBarang`, `JumlahBarang`, `BarangKeluar`, `BarangMasuk`) VALUES
-(212019, 1, 2, 2, 2),
+(212019, 1, 2, 0, 2),
 (212019, 2, 100, 100, 100),
 (212019, 3, 100, 100, 100),
 (212019, 5, 3, 3, 3),
@@ -104,14 +106,14 @@ INSERT INTO `detail_penyewaan` (`IdPenyewaan`, `IdBarang`, `JumlahBarang`, `Bara
 --
 
 CREATE TABLE IF NOT EXISTS `penyewaan` (
-  `IdPenyewaan` int(11) NOT NULL AUTO_INCREMENT,
+  `IdPenyewaan` bigint(20) NOT NULL AUTO_INCREMENT,
   `NamaPenyewa` varchar(100) NOT NULL,
   `WaktuSewa` date NOT NULL,
   `WaktuBalik` date NOT NULL,
   `Alamat` varchar(150) NOT NULL,
-  `Status` enum('Tuntas','Belum') NOT NULL,
+  `Status` enum('Tuntas','Tidak Tuntas','Cancel') NOT NULL,
   PRIMARY KEY (`IdPenyewaan`)
-) ENGINE=InnoDB AUTO_INCREMENT=612020 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2019062320190103 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `penyewaan`
@@ -140,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `status_barang` (
 --
 
 INSERT INTO `status_barang` (`IdBarang`, `Baik`, `Maintenance`, `Rusak`) VALUES
-(1, 8, 3, 0),
+(1, 9, 3, 0),
 (2, 250, 0, 0),
 (3, 1000, 0, 0),
 (4, 500, 0, 0),
@@ -190,8 +192,8 @@ INSERT INTO `user` (`IdUser`, `Username`, `Password`, `Nama`, `Level`, `Status`)
 -- Constraints for table `detail_penyewaan`
 --
 ALTER TABLE `detail_penyewaan`
-  ADD CONSTRAINT `detail_penyewaan_ibfk_1` FOREIGN KEY (`IdPenyewaan`) REFERENCES `penyewaan` (`IdPenyewaan`) ON DELETE CASCADE,
-  ADD CONSTRAINT `detail_penyewaan_ibfk_2` FOREIGN KEY (`IdBarang`) REFERENCES `barang` (`IdBarang`) ON DELETE CASCADE;
+  ADD CONSTRAINT `detail_penyewaan_ibfk_2` FOREIGN KEY (`IdBarang`) REFERENCES `barang` (`IdBarang`) ON DELETE CASCADE,
+  ADD CONSTRAINT `detail_penyewaan_ibfk_3` FOREIGN KEY (`IdPenyewaan`) REFERENCES `penyewaan` (`IdPenyewaan`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `status_barang`

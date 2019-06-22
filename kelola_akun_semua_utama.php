@@ -199,11 +199,15 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Menu Utama
+          Kelola Semua Akun
         </h1>
       </section>
       <!-- Main content -->
       <section class="content">
+        <table border="1">
+          
+          <?php require_once "php/tampil_kelola_akun.php"?>
+        </table>
       </section>
       <!-- /.content -->
     </div>
