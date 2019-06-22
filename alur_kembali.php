@@ -200,8 +200,19 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
+      <h1 align="center">
+          Alur Barang Kembali
+        </h1>
       </section>
       <!-- Main content -->
+      <table border="1">
+        <tr>
+          <td>Nama Penyewa</td>
+          <td>Waktu Penyewaan</td>
+          <td>Edit</td>
+        </tr>
+        <?php require_once "php/tampil_alur_kembali.php"?>
+      </table>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

@@ -23,14 +23,15 @@
          case "Atur":
           //Mempersiapkan Command Query  untuk mengupdate data Jumlah,Baik,Maintenance,Rusak berdasarkan IdBarang untuk mengatu
           $sql= "update detail_penyewaan set JumlahBarang = $Jumlah where IdBarang = $IdBarang and IdPenyewaan=$IdPenyewaan";
-        break;
+          break;
         case "Keluar":
           //Mempersiapkan Command Query  untuk mengupdate data Jumlah,Baik,Maintenance,Rusak berdasarkan IdBarang untuk mengatu
           $sql= "update detail_penyewaan set BarangKeluar = $Jumlah where IdBarang = $IdBarang and IdPenyewaan=$IdPenyewaan";
-        break;
+          break;
         case "Masuk":
-          //header("location: ../index.php");
-        break;
+          //Mempersiapkan Command Query  untuk mengupdate data barang masuk
+          $sql= "update detail_penyewaan set BarangMasuk = $Jumlah where IdBarang = $IdBarang and IdPenyewaan=$IdPenyewaan";
+          break;
       }
     
     //Menjalankan perintah query dan menyimpannya dalam variabel hasil
@@ -48,11 +49,11 @@
           exit;
         break;
         case "Keluar":
-          header("location: edit_detail_penyewaan.php");
+          header("location: kelola_barang_keluar.php");
           exit;
         break;
         case "Masuk":
-          //header("location: ../index.php");
+          header("location: kelola_barang_kembali.php");
           exit;
         break;
       }
