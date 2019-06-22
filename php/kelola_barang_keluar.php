@@ -26,16 +26,14 @@
       $_SESSION['Control'] = "true";
       
       //Memanggil Connection.php
-      require_once "php/connection.php";
+      require_once "connection.php";
       
       //Memilih database
       mysqli_select_db($conn,"dellaria");
   
       //Mempersiapkan Command Query  untuk mengambil data IdBarang,NamaBarang,Jumlah,Baik,Maintenance,Rusak berdasarkan IdBarang
-      $sql="select b.IdBarang,dp.JumlahBarang,b.NamaBarang,sb.Baik from detail_penyewaan as dp,barang as b,status_barang as sb where b.IdBarang=dp.IdBarang and b.IdBarang = sb.IdBarang and dp.IdPenyewaan=$IdPenyewaan ";
+      $sql="select b.IdBarang,b.NamaBarang,dp.JumlahBarang,dp.BarangKeluar from barang as b, detail_penyewaan as dp where dp.IdPenyewaan=$IdPenyewaan and b.IdBarang=dp.IdBarang";
   
-      $sql2 = "select IdBarang,NamaBarang from Barang";
-      
       //Menjalankan perintah query dan menyimpannya dalam variabel hasil
       $hasil=mysqli_query ($conn,$sql);
   
@@ -45,78 +43,58 @@
       if($row)
       {
         echo "<tr>
-                <th colspan='5'>$IdPenyewaan</th>
+                <th colspan='5'>Id Penyewaan $IdPenyewaan</th>
               </tr>
               <tr>
                 <td>Nama Barang</td>
-                <td>Siap Digunakan</td>
-                <td>Sebelum Diubah</td>
-                <td>Sesudah Diubah</td>
+                <td>Yang Disewakan</td>
+                <td>Barang Keluar sebelum</td>
+                <td>Barang Keluar sesudah</td>
                 <td>Edit</td>
               </tr>";
         do
         {
-          list($IdBarang,$JumlahBarang,$NamaBarang,$Baik)=$row;
-          echo "<form action='php/edit_detail_penyewaan.php' method='post'>";
+          list($IdBarang,$NamaBarang,$JumlahBarang,$BarangKeluar)=$row;
+          echo "<form action='edit_detail_penyewaan.php' method='post'>";
           echo "<tr>
                   <td>$NamaBarang</td>
-                  <td>$Baik</td>
                   <td>$JumlahBarang</td>
-                  <td><input type='number' id='Total' name='Jumlah' value=$JumlahBarang min='0' max='$Baik'></td>
-                  <td><input type='submit' name='Action' value='Atur'>
+                  <td>$BarangKeluar</td>
+                  <td><input type='number' id='Total' name='Jumlah' value=$BarangKeluar min='0' max='$JumlahBarang'></td>
+                  <td><input type='submit' name='Shinobi' value='Atur'>
+                      <input type='hidden' name='Action' value='Keluar'>
                       <input type='hidden' name='IdPenyewaan' value='$IdPenyewaan'>
                       <input type='hidden' name='IdBarang' value='$IdBarang'>
                 </tr>";
           echo "</form>";
-          
         }
         while($row=mysqli_fetch_row($hasil));
       } 
-      
-      //tambah barang penyewaan
-      $hasil2=mysqli_query ($conn,$sql2);
-      echo "<tr><td colspan='5'></td></tr>";
-      echo "<form action='php/tambah_barang_penyewaan.php' method='post'>";
-      echo "<tr> <td>";
-      echo "<select name='namabarangp' onChange='Search(this.value)'>";
-      echo "<option value='' disabled selected>Pilih Barang</option>";
-      while ($row2 = mysqli_fetch_array($hasil2)) 
-      {
-        echo "<option value='" . $row2['IdBarang'] . "'>" . $row2['NamaBarang'] . "</option>";
-      }
-      echo "</select>";
-      echo "<td></td>
-            <td></td>
-            <td></td>
-            <td><input type='submit' name='tambah' value='Tambah'>
-                <input type='hidden' name='IdPenyewaan' value='$IdPenyewaan'></td>
-            </tr>";
-      echo "</form>";      
     }
     else
     {
       //Memanggil fungsi untuk mengecek apakah user sudah login atau belum
-      require_once "php/session_check.php";
+      require_once "session_check_dalam.php";
       $level = $_SESSION['Level'];
       switch($level)
       {
          case 1:
-          header("location: ../tubes_mppl/index_teknisi.php");
+          header("location: ../index_teknisi.php");
           exit;
         break;
         case 2:
-          header("location: ../tubes_mppl/index_penanggung.php");
+          header("location: ../index_penanggung.php");
           exit;
         break;
         case 3:
-          header("location: ../tubes_mppl/index.php");
+          header("location: ../index.php");
           exit;
         break;
       }
     }
   ?>
   </table>
-  <a href="index_penanggung.php">
+  <a href="../alur_keluar.php">
     <input type="button" value="Batal">
   </a>
 </body>

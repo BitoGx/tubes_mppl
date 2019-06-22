@@ -7,7 +7,7 @@
   mysqli_select_db($conn,"dellaria");
   
   //Mempersiapkan Command Query  untuk mengambil data IdUser,Nama,Level berdasarkan Username dan Password
-  $sql="select IdPenyewaan,NamaPenyewa from penyewaan";
+  $sql="select IdPenyewaan,NamaPenyewa,WaktuSewa from penyewaan";
   
   //Menjalankan perintah query dan menyimpannya dalam variabel hasil
   $hasil=mysqli_query ($conn,$sql);
@@ -19,11 +19,12 @@
   {
     do
     {
-      list($IdPenyewa,$NamaPenyewa)=$row;
-      echo "<form action='barang.php' method='post'>";
+      list($IdPenyewaan,$NamaPenyewa,$WaktuSewa)=$row;
+      echo "<form action='php/kelola_barang_keluar.php' method='post'>";
       echo "<tr>
               <td>$NamaPenyewa
-              <td><input type='submit' name='Action' value='Atur'><input type='hidden' name='IdPenyewa' value='$IdPenyewa'>";
+              <td>$WaktuSewa
+              <td><input type='submit' name='Action' value='Atur'><input type='hidden' name='IdPenyewaan' value='$IdPenyewaan'>";
       echo "</form>";
     }
     while($row=mysqli_fetch_row($hasil));
