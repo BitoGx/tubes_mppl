@@ -20,7 +20,6 @@
       exit;
     break;
   }
-
 ?>
 
 <html>
@@ -61,6 +60,20 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <script language="javascript">
+  function FormValidation()
+  {
+    if (window.confirm('Apa anda yakin akan melakukan operasi ini ?'))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  </script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -111,8 +124,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i>Detail barang</a></li>
-              <li><a href="teknisi_daftar_barang.php"><i class="fa fa-circle-o"></i>Daftar Barang</a></li>
+              <li><a href="index_teknisi.php"><i class="fa fa-circle-o"></i>Detail barang</a></li>
+              <li><a href="#"><i class="fa fa-circle-o"></i>Daftar Barang</a></li>
             </ul>
           </li>
           <li>
@@ -142,27 +155,20 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1 align="center">
-          Detail barang || Menu Utama
+          Daftar Barang
         </h1>
       </section>
       <!-- Main content -->
       <!-- /.content -->
-      <br>
       <table align="center" class="table table-stripe" style="width:70%">
-        <tr>
-          <td rowspan = "2"> Nama Barang </td>
-          <td rowspan = "2"> Jumlah Barang </td>
-          <td colspan = "3"> Keadaan </td>
-          <td rowspan = "2"> Edit </td>
-        </tr>
-        <tr>
-          <td>Baik</td>
-          <td>Maintenance</td>
-          <td>Rusak</td>
-        </tr>
-        <?php require_once "php/tampil_barang.php"?>
-      </table>
-      <!--</form>-->
+          <tr>
+            <td> Nama Barang </td>
+            <td> Jumlah Barang </td>
+            <td> Edit </td>
+          </tr>
+          <!-- Semua Barang tampil + Checkbox -->
+          <?php require_once "php/tampil_kelola_barang.php"?>
+        </table>
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -206,6 +212,18 @@
   <!-- AdminLTE App -->
   <script src="js/adminlte.min.js"></script>
   <!-- Mengecek Checkbox -->
+  <script>
+  function getCheckedCheckboxesFor(checkboxName)
+  {
+    var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked'), values = [];
+    Array.prototype.forEach.call(checkboxes, function(el)
+    {
+        values.push(el.value);
+    });
+    return values;
+}
+  </script>
+
 </body>
 
 </html>
