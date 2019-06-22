@@ -198,12 +198,22 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1>
-          Menu Utama
+        <h1 align="center">
+          Detail Penyewaan
         </h1>
       </section>
       <!-- Main content -->
       <section class="content">
+      <table border = "1">
+        <tr>
+          <td> Nama Penyewa </td>
+          <td> Waktu Sewa </td>
+          <td> Waktu Balik </td>
+          <td> Status </td>
+          <td> Edit </td>
+        </tr>
+        <?php require_once "php/tampil_penyewaan.php"?>
+      </table>
       </section>
       <!-- /.content -->
     </div>

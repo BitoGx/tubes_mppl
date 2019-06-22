@@ -198,12 +198,26 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1>
-          Menu Utama
+        <h1 align="center">
+          Detail barang || Menu Utama
         </h1>
       </section>
       <!-- Main content -->
       <section class="content">
+      <table align="center" class="table table-stripe" style="width:70%">
+        <tr>
+          <td rowspan = "2"> Nama Barang </td>
+          <td rowspan = "2"> Jumlah Barang </td>
+          <td colspan = "3"> Keadaan </td>
+          <td rowspan = "2"> Edit </td>
+        </tr>
+        <tr>
+          <td>Baik</td>
+          <td>Maintenance</td>
+          <td>Rusak</td>
+        </tr>
+        <?php require_once "php/tampil_barang.php"?>
+      </table>
       </section>
       <!-- /.content -->
     </div>
