@@ -205,7 +205,6 @@
       <!-- Main content -->
       <section class="content">
         <table border="1">
-          
           <?php require_once "php/tampil_kelola_akun.php"?>
         </table>
       </section>
