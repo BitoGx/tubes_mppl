@@ -20,6 +20,8 @@
 
     //Memanggil fungsi untuk mengecek apakah user sudah login atau belum
     require_once "connection.php";
+      
+    $Level = $_SESSION['Level'];
 
     //Memilih database
     mysqli_select_db($conn,"dellaria");
@@ -33,7 +35,15 @@
     if($hasil)
     {
       echo "Maaf tanggal yang dipilih tidak tersedia";
-      header("Refresh: 10;http://localhost/tubes_mppl/teknisi_daftar_barang.php");
+      switch($Level)
+      {
+        case 2:
+          header("Refresh: 5; ../kelola_sewa.php");
+        break;
+        case 3:
+          header("Refresh: 5; ../daftar_penyewaan_utama.php");
+        break;
+      }
     }
     else
     {
@@ -46,26 +56,32 @@
       //Mengecek apakah perintah query berhasil atau gagal
       if($hasil)
       {
-        $Level = $_SESSION['Level'];
         switch($Level)
         {
           case 1:
-            header("location: ../teknisi_daftar_barang.php");
+            header("location: ../index_teknisi.php");
           break;
           case 2:
             header("location: ../kelola_sewa.php");
           break;
           case 3:
-            header("location: ../kelola_sewa_utama.php");
+            header("location: ../daftar_penyewaan_utama.php");
           break;
         }
       }
       else
       {
         //Jika Penambahan Barang gagal akan menampilkan pesan error
-        echo $IdPenyewaan;
-        echo "Barang yang ditambahkan gagal";
-        header("Refresh: 10; http://localhost/tubes_mppl/kelola_sewa.php");
+        echo "Penyewaan yang ditambahkan gagal";
+        switch($Level)
+        {
+          case 2:
+            header("Refresh: 5; ../kelola_sewa.php");
+          break;
+          case 3:
+            header("Refresh: 5; ../daftar_penyewaan_utama.php");
+          break;
+        }
       }
     }
   }

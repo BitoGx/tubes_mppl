@@ -15,6 +15,7 @@
     $WaktuBalik  = $_POST['WaktuBalik'];
     $Alamat      = $_POST['Alamat'];
     $Status      = $_POST['Status'];
+    $Level       = $_SESSION['Level'];
     
     //Memilih database
     mysqli_select_db($conn,"dellaria");
@@ -31,24 +32,31 @@
     if($hasil)
     {
       unset($_SESSION['IdPenyewaan']);
-      $Level = $_SESSION['Level'];
       switch($Level)
       {
         case 1:
           header("location: ../index_teknisi.php");
         break;
         case 2:
-          header("location: ../index_penanggung.php");
+          header("location: ../kelola_sewa.php");
         break;
         case 3:
-          header("location: ../index.php");
+          header("location: ../daftar_penyewaan_utama.php");
         break;
       }
     }
     else
     {
       echo "Data Gagal Di Ubah";
-      header("Refresh: 10; http://localhost/tubes_mppl/kelola_sewa.php");
+      switch($Level)
+      {
+        case 2:
+          header("Refresh: 5; ../kelola_sewa.php");
+        break;
+        case 3:
+          header("Refresh: 5; ../daftar_penyewaan_utama.php");
+        break;
+      }
     }
   }
   else

@@ -24,6 +24,7 @@
       //Menyimpan Variabel yang di kirim menggunakan method POST
       unset($_SESSION['IdPenyewaan']);
       $_SESSION['Control'] = "true";
+      $level = $_SESSION['Level'];
       
       //Memanggil Connection.php
       require_once "connection.php";
@@ -84,25 +85,24 @@
           exit;
         break;
         case 2:
-          header("location: ../index_penanggung.php");
+          header("location: ../alur_kembali.php");
           exit;
         break;
         case 3:
-          header("location: ../index.php");
+          header("location: ../alur_kembali_utama.php");
           exit;
         break;
       }
     }
-    $level = $_SESSION['Level'];
     echo "</table>";
     switch($level)
       {
         case 2:
-          echo "<a href='../alur_keluar.php'><input type='button' value='Batal'></a>";
+          echo "<a href='../alur_kembali.php'><input type='button' value='Batal'></a>";
           break;
         break;
         case 3:
-          echo "<a href='../alur_keluar_utama.php'><input type='button' value='Batal'></a>";
+          echo "<a href='../alur_kembali_utama.php'><input type='button' value='Batal'></a>";
           break;
         break;
       }

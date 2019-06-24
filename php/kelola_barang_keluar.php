@@ -82,11 +82,11 @@
           exit;
         break;
         case 2:
-          header("location: ../index_penanggung.php");
+          header("location: ../alur_keluar.php");
           exit;
         break;
         case 3:
-          header("location: ../index.php");
+          header("location: ../alur_keluar_utama.php");
           exit;
         break;
       }
@@ -105,7 +105,5 @@
         break;
       }
   ?>
-  
-  
 </body>
 </html>

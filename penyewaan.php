@@ -78,7 +78,7 @@
       echo "<tr><td colspan='5'></td></tr>";
       echo "<form action='php/tambah_barang_penyewaan.php' method='post'>";
       echo "<tr> <td>";
-      echo "<select name='namabarangp' onChange='Search(this.value)'>";
+      echo "<select name='namabarangp' onChange='Search(this.value)' required>";
       echo "<option value='' disabled selected>Pilih Barang</option>";
       while ($row2 = mysqli_fetch_array($hasil2)) 
       {
@@ -108,7 +108,7 @@
           exit;
         break;
         case 3:
-          header("location: ../tubes_mppl/index.php");
+          header("location: ../tubes_mppl/detail_penyewaan_utama.php");
           exit;
         break;
       }
