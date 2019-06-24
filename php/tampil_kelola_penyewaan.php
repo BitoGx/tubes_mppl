@@ -25,11 +25,11 @@
             <td><input type='text' name='NamaPenyewa' pattern='[A-Za-z ]+' required></td>
           <tr>
           <tr>
-            <td>Waktu Sewa</td>
+            <td>Tanggal Sewa</td>
             <td><input type='date' id='WaktuSewa' name='WaktuSewa' onclick='CheckDate()' value=$Today></td>
           </tr>
           <tr>
-            <td>Waktu Balik</td>
+            <td>Tanggal Beres</td>
             <td><input type='date' id='WaktuBalik' name='WaktuBalik' onclick='CheckDate()' value=$Today></td>
           </tr>
           <tr>
@@ -73,7 +73,9 @@
               <td>$WaktuBalik
               <td>$Alamat
               <td>$Status
-              <td><input type='submit' name='Action' value='Edit'><input type='hidden' name='IdPenyewaan' value='$IdPenyewaan'>";
+              <td><input type='submit' name='Action' value='Edit'>
+                  <input type='hidden' name='IdPenyewaan' value='$IdPenyewaan'>
+                  <input type='hidden' name='WaktuSewa' value='$$WaktuSewa'>";
       echo "</form>";
     }
     while($row=mysqli_fetch_row($hasil));

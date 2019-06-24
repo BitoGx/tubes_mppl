@@ -4,19 +4,7 @@
 
   if(isset($_POST['IdPenyewaan']))
   {
-    /*
-    *Menyimpan Variabel yang di kirim menggunakan method POST
-    *Mengubah isi variabel nama barang ke CamelCase
-    */
-    $IdPenyewaan = $_POST['IdPenyewaan'];
-    $NamaPenyewa = $_POST['NamaPenyewa'];
     $WaktuSewa   = $_POST['WaktuSewa'];
-    $str = str_replace('-', '', $WaktuSewa);
-    $WaktuBalik  = $_POST['WaktuBalik'];
-    $Alamat      = $_POST['Alamat'];
-    $Status      = $_POST['Status'];
-    $NamaPenyewa = ucwords($NamaPenyewa);
-    $IdPenyewaan = $IdPenyewaan.$str;
 
     //Memanggil fungsi untuk mengecek apakah user sudah login atau belum
     require_once "connection.php";
@@ -27,14 +15,16 @@
     mysqli_select_db($conn,"dellaria");
 
     //Mempersiapkan Command Query  untuk mengecek apakah IdPenyewaan yang ditambahkan sudah ada atau belum
-    $sql="select * from barang where IdPenyewaan='$IdPenyewaan'";
+    $sql="select * from penyewaan where WaktuSewa='$WaktuSewa'";
 
     //Menjalankan perintah query dan menyimpannya dalam variabel hasil
     $hasil=mysqli_query ($conn,$sql);
+    
+    $row=mysqli_fetch_row($hasil);
 
-    if($hasil)
+    if($row)
     {
-      echo "Maaf tanggal yang dipilih tidak tersedia";
+      echo "Maaf tanggal sewa yang dipilih tidak tersedia";
       switch($Level)
       {
         case 2:
@@ -47,8 +37,22 @@
     }
     else
     {
+      /*
+      *Menyimpan Variabel yang di kirim menggunakan method POST
+      *Mengubah isi variabel nama barang ke CamelCase
+      */
+      $IdPenyewaan = $_POST['IdPenyewaan'];
+      $NamaPenyewa = $_POST['NamaPenyewa'];
+      $WaktuSewa   = $_POST['WaktuSewa'];
+      $str = str_replace('-', '', $WaktuSewa);
+      $WaktuBalik  = $_POST['WaktuBalik'];
+      $Alamat      = $_POST['Alamat'];
+      $Status      = $_POST['Status'];
+      $NamaPenyewa = ucwords($NamaPenyewa);
+      $IdPenyewaan = $IdPenyewaan.$str;
+      
       //Mempersiapkan Command Query  untuk menambahkan Data Penyewaan baru
-      $sql="insert into penyewaan (IdPenyewaan,NamaPenyewa,WaktuSewa,WaktuBalik,Alamat,Status) value ($IdPenyewaan, '$NamaPenyewa', '$WaktuSewa', '$WaktuBalik', '$Alamat', '$Status')";
+      $sql="insert into penyewaan (IdPenyewaan,NamaPenyewa,WaktuSewa,WaktuBalik,Alamat,Status) value ('$IdPenyewaan', '$NamaPenyewa', '$WaktuSewa', '$WaktuBalik', '$Alamat', '$Status')";
 
       //Menjalankan perintah query dan menyimpannya dalam variabel hasil
       $hasil=mysqli_query ($conn,$sql);
@@ -73,6 +77,8 @@
       {
         //Jika Penambahan Barang gagal akan menampilkan pesan error
         echo "Penyewaan yang ditambahkan gagal";
+        echo "$sql";
+        /*
         switch($Level)
         {
           case 2:
@@ -82,6 +88,7 @@
             header("Refresh: 5; ../daftar_penyewaan_utama.php");
           break;
         }
+        */
       }
     }
   }
