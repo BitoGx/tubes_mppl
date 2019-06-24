@@ -1,10 +1,32 @@
 <html>
 <head>
   <title> Penyewaan </title>
+  <script language="javascript">
+    function FormValidation()
+    {   
+      //Menyimpan nilai variable Object kedalam Variabel biasa dan mengecek agar total barang sesuai
+      var WaktuSewa = document.getElementById("WaktuSewa");
+      var Sewa = WaktuSewa.value;
+      Sewa = Sewa.replace(/[^a-z\d\s]+/gi, "");
+      var WaktuBalik = document.getElementById("WaktuBalik");
+      var Balik = WaktuBalik.value;
+      Balik = Balik.replace(/[^a-z\d\s]+/gi, "");
+      if(Balik < Sewa)
+      {
+        alert("Maaf tanggal sewa tidak boleh kurang dari tanggal beres penyewaan");
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+      
+    }
+  </script>
 </head>
 <body>
 <center>
-  <form action="kelola_penyewaan.php" method="post">
+  <form action="kelola_penyewaan.php" onsubmit="return FormValidation()" method="post">
   <table border="1">
   <?php
     
@@ -49,12 +71,12 @@
               <tr>
                 <td>Waktu Penyewaan</td>
                 <td>$WaktuSewa</td>
-                <td><input type='text' name='WaktuSewa' value=$WaktuSewa pattern='(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))' title='yyyy-mm-dd'></td>
+                <td><input type='text' id='WaktuSewa' name='WaktuSewa' value=$WaktuSewa pattern='(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))' title='yyyy-mm-dd'></td>
               </tr>
               <tr>
                 <td>Waktu Kembali</td>
                 <td>$WaktuBalik</td>
-                <td><input type='text' name='WaktuBalik' value=$WaktuBalik pattern='(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))' title='yyyy-mm-dd'></td>
+                <td><input type='text' id='WaktuBalik' name='WaktuBalik' value=$WaktuBalik pattern='(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))' title='yyyy-mm-dd'></td>
               </tr>
               <tr>
                 <td>Alamat</td>
