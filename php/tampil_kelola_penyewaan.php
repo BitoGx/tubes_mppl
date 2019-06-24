@@ -1,6 +1,6 @@
 <?php
   
-  $Today = date("Ymd");
+  $Today = date("Y-m-d");
   
   //Memanggil Connection.php
   require_once "connection.php";
@@ -19,7 +19,7 @@
   
   if($row)
   {
-    echo "<form action='php/tambah_penyewaan.php' method='post'>";
+    echo "<form action='php/tambah_penyewaan.php' onsubmit='return FormValidation()' method='post'>";
     echo "<tr>
             <td>Nama Penyewa</td>
             <td><input type='text' name='NamaPenyewa' pattern='[A-Za-z ]+' required></td>
