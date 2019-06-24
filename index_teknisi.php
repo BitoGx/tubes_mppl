@@ -142,7 +142,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1 align="center">
-          Detail barang || Menu Utama
+          Detail barang
         </h1>
       </section>
       <!-- Main content -->

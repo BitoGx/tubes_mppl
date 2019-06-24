@@ -199,12 +199,13 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Menu Utama
+          Daftar Penyewaan
         </h1>
       </section>
       <!-- Main content -->
-      <section class="content">
-      </section>
+      <table border = "1">
+        <?php require_once "php/tampil_kelola_penyewaan.php"?>
+      </table>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

@@ -40,6 +40,9 @@
         case 1:
           header("location: ../index_teknisi.php");
         break;
+        case 2:
+          header("location: ../index_penanggung.php");
+        break;
         case 3:
           header("location: ../detail_barang_utama.php");
         break;

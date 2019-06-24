@@ -10,6 +10,8 @@
     
     //Session Start
     session_start();
+    
+    $level = $_SESSION['Level'];
 
     if(isset($_POST['IdPenyewaan']))
     {
@@ -78,29 +80,36 @@
     {
       //Memanggil fungsi untuk mengecek apakah user sudah login atau belum
       require_once "session_check_dalam.php";
-      $level = $_SESSION['Level'];
       switch($level)
       {
-         case 1:
-          header("location: ../ndex_teknisi.php");
+        case 1:
+          header("location: ../index_teknisi.php");
           exit;
         break;
         case 2:
-          header("location: ../index_penanggung.php");
+          header("location: ../kelola_sewa.php");
           exit;
         break;
         case 3:
-          header("location: ../index.php");
+          header("location: ../daftar_penyewaan_utama.php");
           exit;
         break;
       }
     }
+    echo "</table>";
+    echo "<input type='submit' value='Simpan'>";
+    switch($level)
+    {
+      case 2:
+        echo "<a href='../kelola_sewa.php'><input type='button' value='Batal'></a>";
+        exit;
+      break;
+      case 3:
+        echo "<a href='../daftar_penyewaan_utama.php'><input type='button' value='Batal'></a>";
+        exit;
+      break;
+    } 
   ?>
-  </table>
-  <input type="submit" value="Simpan">
-  <a href="../kelola_sewa.php">
-    <input type="button" value="Batal">
-  </a>
   </form>
 </body>
 </html>

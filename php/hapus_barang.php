@@ -27,6 +27,9 @@
         case 1:
           header("location: ../teknisi_daftar_barang.php");
         break;
+        case 2:
+          header("location: ../index_penanggung.php");
+        break;        
         case 3:
           header("location: ../daftar_barang_utama.php");
         break;
