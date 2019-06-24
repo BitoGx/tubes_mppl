@@ -39,39 +39,69 @@
               <select name='Level' required>
                 <option value='' disabled selected >Tingkat</option>
                 <option value='1'>Teknisi</option>
-                <option value='2'>Penanggun Jawab</option>
+                <option value='2'>Penanggung Jawab</option>
               </select>
             </td>
-          </tr>
-          <tr>
-            <td>Alamat</td>
-            <td><textarea name='Alamat' cols=40 rows=3></textarea>
           </tr>
           <tr>
             <td>Status</td>
             <td>
               <select name='Status' required>
                 <option value='' disabled selected >Status</option>
-                <option value='Tuntas'>Tuntas</option>
-                <option value='Tidak Tuntas'>Tidak Tuntas</option>
-                <option value='Cancel'>Cancel</option>
+                <option value='0'>Non-Aktif</option>
+                <option value='1'>Aktif</option>
               </select>
             </td>
-          </tr> 
+          </tr>
           <tr>
             <td colspan=2>
-              <input type='submit' name='Action' value='Tambah'><input type='hidden' name='IdPenyewaan' value='$Today'>
+              <input type='submit' name='Action' value='Tambah'>
             </td>
           <tr>";
     echo "</form>";
+    echo "</table>
+          <br>
+          <table border='1'>";
+    echo "<tr>
+            <td>Username</td>
+            <td>Nama</td>
+            <td>Level</td>
+            <td>Status</td>
+            <td>Edit</td>
+          </tr>";
     do
     {
-      list($IdBarang,$NamaBarang,$Jumlah)=$row;
-      echo "<form action='php/hapus_barang.php' method='post'";
+      list($IdUser,$Username,$Nama,$Level,$Status)=$row;
+      switch($Level)
+      {
+        case 1:
+          $JobDesc = "Teknisi";
+        break;
+        case 2:
+          $JobDesc = "Penanggung Jawab";
+        break;
+        case 3:
+          $JobDesc = "Pemilik";
+        break;
+      }
+      switch($Status)
+      {
+        case 1:
+          $Stat = "Aktif";
+        break;
+        case 0:
+          $Stat = "Non-Aktif";
+        break;
+      }
+      
+      echo "<form action='php/edit_akun.php' method='post'";
       echo "<tr>
-              <td>$NamaBarang
-              <td>$Jumlah
-              <td><input type='submit' name='Action' value='Hapus'><input type='hidden' name='IdBarang' value='$IdBarang'>";
+              <td>$Username</td>
+              <td>$Nama</td>
+              <td>$JobDesc</td>
+              <td>$Stat</td>
+              <td><input type='submit' name='Action' value='Edit'><input type='hidden' name='IdUser' value='$IdUser'></td>
+            </tr>";
       echo "</form>";
     }
     while($row=mysqli_fetch_row($hasil));
