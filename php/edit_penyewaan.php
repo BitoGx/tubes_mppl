@@ -2,6 +2,25 @@
 <head>
   <title> Penyewaan </title>
   <script language="javascript">
+    function CheckDate()
+    {
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+      if(dd<10)
+      {
+        dd='0'+dd
+      } 
+      if(mm<10)
+      {
+        mm='0'+mm
+      } 
+      today = yyyy+'-'+mm+'-'+dd;
+      document.getElementById("WaktuSewa").setAttribute("min", today);
+      document.getElementById("WaktuBalik").setAttribute("min", today);
+    }
+    
     function FormValidation()
     {   
       //Menyimpan nilai variable Object kedalam Variabel biasa dan mengecek agar total barang sesuai
@@ -20,7 +39,6 @@
       {
         return true;
       }
-      
     }
   </script>
 </head>
@@ -71,12 +89,12 @@
               <tr>
                 <td>Waktu Penyewaan</td>
                 <td>$WaktuSewa</td>
-                <td><input type='text' id='WaktuSewa' name='WaktuSewa' value=$WaktuSewa pattern='(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))' title='yyyy-mm-dd'></td>
+                <td><input type='date' id='WaktuSewa' name='WaktuSewa' onclick='CheckDate()' value=$WaktuSewa></td>
               </tr>
               <tr>
                 <td>Waktu Kembali</td>
                 <td>$WaktuBalik</td>
-                <td><input type='text' id='WaktuBalik' name='WaktuBalik' value=$WaktuBalik pattern='(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))' title='yyyy-mm-dd'></td>
+                <td><input type='date' id='WaktuBalik' name='WaktuBalik' onclick='CheckDate()' value=$WaktuBalik></td>
               </tr>
               <tr>
                 <td>Alamat</td>

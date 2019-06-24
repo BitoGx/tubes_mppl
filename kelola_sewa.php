@@ -62,17 +62,44 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <script language="javascript">
-  function FormValidation()
-  {
-    if (window.confirm('Apa anda yakin akan melakukan operasi ini ?'))
+    function CheckDate()
     {
-      return true;
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+      if(dd<10)
+      {
+        dd='0'+dd
+      } 
+      if(mm<10)
+      {
+        mm='0'+mm
+      } 
+      today = yyyy+'-'+mm+'-'+dd;
+      document.getElementById("WaktuSewa").setAttribute("min", today);
+      document.getElementById("WaktuBalik").setAttribute("min", today);
     }
-    else
-    {
-      return false;
+    
+    function FormValidation()
+    {   
+      //Menyimpan nilai variable Object kedalam Variabel biasa dan mengecek agar total barang sesuai
+      var WaktuSewa = document.getElementById("WaktuSewa");
+      var Sewa = WaktuSewa.value;
+      Sewa = Sewa.replace(/[^a-z\d\s]+/gi, "");
+      var WaktuBalik = document.getElementById("WaktuBalik");
+      var Balik = WaktuBalik.value;
+      Balik = Balik.replace(/[^a-z\d\s]+/gi, "");
+      if(Balik < Sewa)
+      {
+        alert("Maaf tanggal sewa tidak boleh kurang dari tanggal beres penyewaan");
+        return false;
+      }
+      else
+      {
+        return true;
+      }
     }
-  }
   </script>
 </head>
 

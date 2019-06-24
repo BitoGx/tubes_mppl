@@ -1,4 +1,8 @@
-<?php
-    echo "Maaf barang sudah ada di dalam database";
-    header("Refresh: 10; http://localhost/tubes_mppl/teknisi_daftar_barang.php");
-?>
+<html>
+<body>
+<form action="test.php" method="get">
+Birthday: <input type="date" name="bday">
+<input type='submit' value='Simpan'>
+</form>
+</body>
+</html>

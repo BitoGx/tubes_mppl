@@ -26,11 +26,11 @@
           <tr>
           <tr>
             <td>Waktu Sewa</td>
-            <td><input type='text' name='WaktuSewa' pattern='(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))' title='yyyy-mm-dd'>
+            <td><input type='date' id='WaktuSewa' name='WaktuSewa' onclick='CheckDate()' value=$Today></td>
           </tr>
           <tr>
             <td>Waktu Balik</td>
-            <td><input type='text' name='WaktuBalik' pattern='(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))' title='yyyy-mm-dd'></td>
+            <td><input type='date' id='WaktuBalik' name='WaktuBalik' onclick='CheckDate()' value=$Today></td>
           </tr>
           <tr>
             <td>Alamat</td>
