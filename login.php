@@ -1,7 +1,12 @@
 <?php
 session_start();
-if(isset($_SESSION['Level']))
+
+if((isset($_SESSION['Level'])) and ($_SESSION['Status'] != 0))
 {
+  if($_SESSION['Status'] != 0)
+  {
+    session_destroy();
+  }
   $Level = $_SESSION['Level'];
   switch($Level)
   {

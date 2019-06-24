@@ -21,7 +21,7 @@
     mysqli_select_db($conn,"dellaria");
   
     //Mempersiapkan Command Query  untuk mengambil data IdUser,Nama,Level berdasarkan Username dan Password
-    $sql="select IdUser,Nama,Level from user where Username='$username' and Password=sha1('$password')";
+    $sql="select IdUser,Nama,Level,Status from user where Username='$username' and Password=sha1('$password')";
   
     //Menjalankan perintah query dan menyimpannya dalam variabel hasil
     $hasil=mysqli_query ($conn,$sql);
@@ -32,10 +32,11 @@
     //Menjalankan perintah perulangan sebanyak yang dibutuhkan
     if($row)
     {
-      list($IdUser,$Nama,$Level)=$row;
+      list($IdUser,$Nama,$Level,$Status)=$row;
       $_SESSION['Id']=$IdUser;
       $_SESSION['Nama']=$Nama;
       $_SESSION['Level']=$Level;
+      $_SESSION['Status']=$Status;
       $_SESSION['Loggedin']="true";
         
       //Memisahkan Level setiap pekerja
