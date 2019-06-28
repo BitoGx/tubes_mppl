@@ -46,10 +46,10 @@
       $Alamat      = $_POST['Alamat'];
       $Status      = $_POST['Status'];
       $str = str_replace('-', '', $WaktuSewa);
-      $IdPenyewaan = $IdPenyewaan.$str;
+      $str = $IdPenyewaan.$str;
       
       //Mempersiapkan Command Query  untuk mengupdate data Jumlah,Baik,Maintenance,Rusak berdasarkan IdBarang
-      $sql= "update penyewaan set NamaPenyewa = '$Nama', WaktuSewa = '$WaktuSewa', WaktuBalik = '$WaktuBalik', Alamat = '$Alamat', Status = '$Status' where IdPenyewaan = $IdPenyewaan";
+      $sql= "update penyewaan set IdPenyewaan = '$str', NamaPenyewa = '$Nama', WaktuSewa = '$WaktuSewa', WaktuBalik = '$WaktuBalik', Alamat = '$Alamat', Status = '$Status' where IdPenyewaan = $IdPenyewaan";
         
       //Menjalankan perintah query dan menyimpannya dalam variabel hasil
       $hasil=mysqli_query ($conn,$sql);
