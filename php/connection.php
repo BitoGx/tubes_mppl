@@ -1,7 +1,7 @@
  <?php
   if(isset($_SESSION['Control']) || ($_SESSION['Loggedin'] == true))
   {
-    $dbhost = "192.168.100.7";
+    $dbhost = "192.168.1.7";
     $dbname = "dellaria";
     $dbuser = "admin";
     $dbpass = "123adm123";

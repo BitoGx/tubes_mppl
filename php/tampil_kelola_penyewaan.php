@@ -1,22 +1,45 @@
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="css/AdminLTE.min.css">
+<link rel="stylesheet" href="css/skins/_all-skins.min.css">
+<!-- Morris chart -->
+<link rel="stylesheet" href="bower_components/morris.js/morris.css">
+<!-- jvectormap -->
+<link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
+<!-- Date Picker -->
+<link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+<!-- Google Font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <?php
-  
+
   $Today = date("Y-m-d");
-  
+
   //Memanggil Connection.php
   require_once "connection.php";
-  
+
   //Memilih database
   mysqli_select_db($conn,"dellaria");
-  
+
   //Mempersiapkan Command Query  untuk mengambil data IdUser,Nama,Level berdasarkan Username dan Password
   $sql="select IdPenyewaan,NamaPenyewa,WaktuSewa,WaktuBalik,Alamat,Status from penyewaan";
-  
+
   //Menjalankan perintah query dan menyimpannya dalam variabel hasil
   $hasil=mysqli_query ($conn,$sql);
-  
+
   //Mengambil 1 baris hasil dari perintah query
   $row=mysqli_fetch_row($hasil);
-  
+
   if($row)
   {
     echo "<form action='php/tambah_penyewaan.php' onsubmit='return FormValidation()' method='post'>";
@@ -46,7 +69,7 @@
                 <option value='Cancel'>Cancel</option>
               </select>
             </td>
-          </tr> 
+          </tr>
           <tr>
             <td colspan=2>
               <input type='submit' name='Action' value='Tambah'><input type='hidden' name='IdPenyewaan' value='$Today'>
@@ -54,7 +77,7 @@
           <tr>";
     echo "</form>";
     echo "</table><br>";
-    echo "<table border=2>";
+    echo "<table align='center' class='table table-stripe' style='width:70%''>";
     echo "<tr>
             <td> Nama Penyewa </td>
             <td> Waktu Sewa </td>
