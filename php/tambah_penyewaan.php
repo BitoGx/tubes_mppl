@@ -44,7 +44,8 @@
       $IdPenyewaan = $_POST['IdPenyewaan'];
       $NamaPenyewa = $_POST['NamaPenyewa'];
       $WaktuSewa   = $_POST['WaktuSewa'];
-      $str = str_replace('-', '', $WaktuSewa);
+      $str         = str_replace('-', '', $WaktuSewa);
+      $IdPenyewaan = str_replace('-', '', $IdPenyewaan);
       $WaktuBalik  = $_POST['WaktuBalik'];
       $Alamat      = $_POST['Alamat'];
       $Status      = $_POST['Status'];
@@ -77,8 +78,6 @@
       {
         //Jika Penambahan Barang gagal akan menampilkan pesan error
         echo "Penyewaan yang ditambahkan gagal";
-        echo "$sql";
-        /*
         switch($Level)
         {
           case 2:
@@ -88,7 +87,6 @@
             header("Refresh: 5; ../daftar_penyewaan_utama.php");
           break;
         }
-        */
       }
     }
   }
